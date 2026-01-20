@@ -1,41 +1,37 @@
 <template>
   <div
-    class="bg-black flex flex-col max-w-8xl mx-auto px-6 sm:px-10 md:px-16 lg:px-20 relative"
+    class="bg-black flex flex-col max-w-8xl mx-auto px-6 sm:px-10 md:px-16 lg:px-20 relative scale-4k"
   >
-    <!-- Header Top-Left -->
+    <!-- Header -->
     <h1
-      class="text-white font-normal not-italic tracking-[1.8px] mb-0 text-[clamp(54px,12vw,172px)] leading-[1] sm:leading-[0.9]"
+      class="text-white font-normal tracking-[1.8px] text-[clamp(54px,10vw,720px)] leading-[1] sm:leading-[0.9]"
       style="font-family: Recoleta"
     >
       Hey i’m Tav
     </h1>
-    <!-- Middle content container -->
-    <div
-      class="w-full relative mt-16 sm:mt-32 md:mt-50 mb-16 sm:mb-28 md:mb-40"
-    >
+
+    <!-- Conversation -->
+    <div class="w-full relative mt-16 sm:mt-32 md:mt-30 lg:mt-40 2x1:mt-50 mb-16 sm:mb-28 md:mb-40">
       <Transition name="fade-scale" mode="out-in">
         <div
           :key="currentNode.id"
           class="absolute top-0 right-0 text-right max-w-full md:max-w-8xl break-words"
         >
-          <p
-            class="text-[clamp(22px,6vw,36px)] font-serif text-white font-light mb-2 text-balance recoleta-font"
-          >
+          <p class="text-[clamp(22px,3vw,36px)] text-white font-light mb-2 recoleta-font">
             {{ currentNode.response }}
           </p>
           <p
             v-if="currentNode.subtitle"
-            class="text-[clamp(14px,3vw,36px)] font-serif text-gray-500 font-light mb-2 text-balance recoleta-font"
+            class="text-[clamp(14px,3vw,36px)] text-gray-500 font-light mb-2 recoleta-font"
           >
             {{ currentNode.subtitle }}
           </p>
         </div>
       </Transition>
     </div>
+
     <!-- Buttons -->
-    <div
-      class="flex flex-wrap justify-center gap-4 w-full max-w-8xl mt-60 sm:mt-48 md:mt-48"
-    >
+    <div class="flex flex-wrap justify-center gap-4 w-full max-w-8xl mt-60 sm:mt-48 md:mt-48">
       <div
         v-for="button in currentNode.buttons"
         :key="button.id"
@@ -43,39 +39,43 @@
       >
         <button
           @click="handleButtonClick(button.nextNodeId)"
-          class="rounded-full font-semibold text-base sm:text-lg md:text-xl lg:text-2xl px-4 sm:px-5 md:px-6 py-3 sm:py-3.5 md:py-4 text-center btn-ani cursor-pointer"
+          class="rounded-full font-semibold text-base sm:text-lg md:text-xl lg:text-2xl px-4 sm:px-5 md:px-6 py-3 sm:py-3.5 md:py-4 btn-ani cursor-pointer"
         >
           {{ button.label }}
         </button>
       </div>
     </div>
-    <!-- Reset button -->
+
+    <!-- Reset -->
     <button
       v-if="canReset"
       @click="resetConversation"
-      class="mt-4 px-6 border border-white text-white rounded-full hover:bg-white/10 transition-colors duration-200 self-start"
+      class="mt-4 px-6 border border-white text-white rounded-full hover:bg-white/10 self-start"
     >
       Start Over
     </button>
   </div>
 </template>
+
 <script setup>
-import { ref, computed } from "vue";
-import { conversationTree } from "./TavIntro/conversationTree.js";
-const currentNodeId = ref("start");
-const currentNode = computed(() => {
-  return conversationTree[currentNodeId.value];
-});
-const canReset = computed(() => {
-  return currentNodeId.value !== "start";
-});
+import { ref, computed } from 'vue'
+import { conversationTree } from './TavIntro/conversationTree.js'
+
+const currentNodeId = ref('start')
+
+const currentNode = computed(() => conversationTree[currentNodeId.value])
+
+const canReset = computed(() => currentNodeId.value !== 'start')
+
 const handleButtonClick = (nextNodeId) => {
-  currentNodeId.value = nextNodeId;
-};
+  currentNodeId.value = nextNodeId
+}
+
 const resetConversation = () => {
-  currentNodeId.value = "start";
-};
+  currentNodeId.value = 'start'
+}
 </script>
+
 <style scoped>
 .fade-scale-enter-active,
 .fade-scale-leave-active {
@@ -88,5 +88,12 @@ const resetConversation = () => {
 .fade-scale-leave-to {
   opacity: 0;
   transform: scale(1.05);
+}
+
+@media (min-width:1921px){
+  .scale-4k {
+    transform: scale(calc(1000vw / 1920));
+    transform-origin: top center;
+  }
 }
 </style>

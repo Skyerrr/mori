@@ -35,7 +35,7 @@
         </li>
         <li>
           <a
-            @click.prevent="scrollToTarget('journey')" 
+            @click.prevent="scrollToTarget('journey', -55)" 
             class="flex justify-center items-center w-19 h-7 relative text-hover-vertical center-all cursor-pointer"
           >
             <span>About me</span>
@@ -67,9 +67,21 @@
 </template>
 
 <script setup>
-const scrollToTarget = (target) => {
+const scrollToTarget = (target, offset = 0) => {
   const el = document.getElementById(target);
-  if (el) el.scrollIntoView({ behavior: 'smooth' });
+  if (!el) return;
+
+  const y =
+    el.getBoundingClientRect().top +
+    window.pageYOffset +
+    offset;
+
+  window.scrollTo({
+    top: y,
+    behavior: "smooth",
+  });
+
+  open.value = false;
 };
 </script>
 
