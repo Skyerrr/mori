@@ -1,6 +1,6 @@
 <template>
   <nav class="sticky top-0 z-50 w-full topbar shadow-md py-3">
-    <div class="mx-auto flex justify-between px-20">
+    <div class="mx-auto flex justify-between px-2 md:px-20">
       <!-- Logo -->
       <div class="mt-3">
         <h1
@@ -27,7 +27,7 @@
         <li>
           <a
             href="#work"
-            class="flex justify-center items-center w-18 h-7 relative text-hover-vertical"
+            class="flex justify-center items-center w-18 h-7 relative text-hover-vertical center-all"
           >
             <span>Work</span>
             <span>Work</span>
@@ -35,8 +35,8 @@
         </li>
         <li>
           <a
-            href="#about"
-            class="flex justify-center items-center w-19 h-7 relative text-hover-vertical"
+            @click.prevent="scrollToTarget('journey')" 
+            class="flex justify-center items-center w-19 h-7 relative text-hover-vertical center-all cursor-pointer"
           >
             <span>About me</span>
             <span>About me</span>
@@ -44,30 +44,32 @@
         </li>
         <li>
           <a
-            href="#contact"
-            class="flex justify-center items-center w-18 h-7 relative text-hover-vertical"
+            
+            @click.prevent="scrollToTarget('connect')" 
+            class="flex justify-center items-center w-18 h-7 relative text-hover-vertical center-all cursor-pointer"
           >
             <span>Contact</span>
             <span>Contact</span>
           </a>
         </li>
         <li class="">
-          <button
-            href="#resume"
-            class="flex justify-center items-center w-18 h-7 relative text-hover-vertical"
+          <a
+            href="@/assets/files/arrow.svg" download
+            class="flex justify-center items-center w-18 h-7 relative text-hover-vertical center-all"
           >
             <span>Resume</span>
             <span>Resume</span>
-          </button>
+          </a>
         </li>
       </ul>
     </div>
   </nav>
 </template>
 
-<script>
-export default {
-  name: "TopBar",
+<script setup>
+const scrollToTarget = (target) => {
+  const el = document.getElementById(target);
+  if (el) el.scrollIntoView({ behavior: 'smooth' });
 };
 </script>
 

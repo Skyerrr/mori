@@ -1,17 +1,24 @@
 <template>
+  <div
+    class="flex flex-col items-center pt-6 gap-3 w-full text-white mb-3 satoshi font-medium px-4 sm:px-6 md:px-10 lg:px-20 xl:px-32"
+  >
+    <span class="text-[clamp(18px,1.2vw,24px)] leading-[clamp(24px,1.5vw,32px)]">
+      Journey
+    </span>
+
     <div
-      class="flex flex-col items-center pt-6 gap-3 self-stretch text-white mb-3 satoshi font-medium"
+      class="text-center text-white font-recoleta font-normal 
+             text-[clamp(32px,2.5vw,48px)] leading-[clamp(36px,2.8vw,48px)] 
+             tracking-[clamp(1.2px,0.09vw,1.8px)] mb-6"
     >
-      <spam style="font-size: 24px; line-height: 32px">Journey</spam>
-      <div
-        class="text-white text-center font-[Recoleta] text-[48px] not-italic font-[400] leading-[48px] tracking-[1.8px] mb-6"
-      >
-        <spam>Career moments that shaped me</spam>
-      </div>
-      <div
-        class="text-[#71717A] text-center satoshi font-bold text-[32px] not-italic font-[700] leading-[38px]"
-      >
-        The kind of work that changed how I think, not just what I make.
-      </div>
+      <span>Career moments that shaped me</span>
     </div>
-    </template>
+
+    <div
+      class="text-[#71717A] text-center satoshi font-bold 
+             text-[clamp(20px,1.7vw,32px)] leading-[clamp(24px,2vw,38px)]"
+    >
+      The kind of work that changed how I think, not just what I make.
+    </div>
+  </div>
+</template>

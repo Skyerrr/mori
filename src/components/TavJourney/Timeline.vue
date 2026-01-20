@@ -25,8 +25,8 @@
 
         <!-- Content -->
         <div class="">
-          <h3 class="text-[24px] inter font-bold">{{ item.title }}</h3>
-          <p class="mt-2 text-[#71717A] leading-relaxed text-[20px] inter font-bold">
+          <h3 class="text-[clamp(14px,4vw,24px)] inter font-bold">{{ item.title }}</h3>
+          <p class="mt-2 text-[#71717A] leading-relaxed text-[clamp(12px,2vw,20px)] inter font-bold">
             {{ item.description }}
           </p>
         </div>
