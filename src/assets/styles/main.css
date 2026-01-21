@@ -125,6 +125,19 @@
           hue-rotate(191deg) brightness(92%) contrast(89%);
 }
 
+.arrow-black {
+  display: inline-block;
+  transform: rotate(0deg) translate(0, 0);
+  transition:
+    transform 0.5s ease,
+    filter 0.5s ease;
+}
+
+.arrow-black-wrapper:hover .arrow-black {
+  transform: rotate(45deg) translate(0, 0);
+
+}
+
 
 
 /* Utility classes */

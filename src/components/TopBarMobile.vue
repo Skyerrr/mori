@@ -16,7 +16,7 @@
         v-if="open"
         class="absolute left-0 top-full w-full menu flex flex-col items-center gap-7 py-6 text-white md:hidden"
       >
-        <button @click="scrollToTarget('work')">Work</button>
+        <button @click="scrollToTarget('work', -30)">Work</button>
         <button @click="scrollToTarget('journey', -30)">About me</button>
         <button @click="scrollToTarget('connect')">Contact</button>
         <a href="@/assets/files/arrow.svg"> Resume </a>

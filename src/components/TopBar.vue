@@ -26,8 +26,8 @@
       >
         <li>
           <a
-            href="#work"
-            class="flex justify-center items-center w-18 h-7 relative text-hover-vertical center-all"
+            @click.prevent="scrollToTarget('work', -55)"
+            class="flex justify-center items-center w-18 h-7 relative text-hover-vertical center-all cursor-pointer"
           >
             <span>Work</span>
             <span>Work</span>
