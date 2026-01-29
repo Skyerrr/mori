@@ -1,6 +1,6 @@
 <template>
   <div
-    class=" bg-black flex flex-col max-w-8xl mx-auto px-4 sm:px-6 md:px-10 lg:px-20 xl:px-32 relative satoshi-medium-font"
+    class="bg-black flex flex-col max-w-8xl mx-auto px-4 sm:px-6 md:px-10 lg:px-20 xl:px-32 relative satoshi-medium-font"
 
   >
     <TopText />

@@ -16,7 +16,7 @@
             <div
               :class="
                 item.hoverBorder +
-                ' h-full  border-t-2 border-l-2 border-b-2 border-transparent rounded-[40px] rounded-bl-[40px] transition-all duration-300'
+                ' h-full  border-2 border-transparent rounded-[40px] rounded-bl-[40px] transition-all duration-300'
               "
             ></div>
           </div>
@@ -63,22 +63,33 @@
 
                 <div class="h-px bg-[#2e2e2e] mt-6"></div>
 
-                <div v-if="item.stats" class="flex gap-[clamp(24px,4vw,72px)]">
-                  <div
-                    v-for="stat in item.stats"
-                    :key="stat.label"
-                    class="flex flex-col items-center"
-                  >
-                    <div class="text-[clamp(22px,3vw,40px)] satoshi font-normal">
-                      <span v-if="stat.prefix">{{ stat.prefix }}</span>
-                      <span><CountUpNumber :value="stat.value" /></span>
-                      <span v-if="stat.suffix">{{ stat.suffix }}</span>
-                    </div>
-                    <p class="text-[#A3A3A3] text-[clamp(12px,1vw,16px)]">
-                      {{ stat.label }}
-                    </p>
-                  </div>
-                </div>
+<div
+  v-if="item.stats"
+  class="mx-auto w-full max-w-[720px] flex justify-between gap-[clamp(16px,4vw,56px)]"
+>
+  <div
+    v-for="stat in item.stats"
+    :key="stat.label"
+    class="flex flex-col items-center flex-1"
+  >
+    <!-- Number -->
+    <div
+      class="flex items-baseline gap-1 text-[clamp(22px,3vw,40px)] satoshi font-normal leading-none"
+    >
+      <span v-if="stat.prefix">{{ stat.prefix }}</span>
+      <CountUpNumber :value="stat.value" />
+      <span v-if="stat.suffix">{{ stat.suffix }}</span>
+    </div>
+
+    <!-- Label -->
+<p
+  class="mt-1 text-[#A3A3A3] text-[clamp(12px,1vw,16px)]
+         text-center whitespace-nowrap"
+>
+  {{ stat.label }}
+</p>
+  </div>
+</div>
               </div>
               <a
                 href="https://www.linkedin.com/in/rodrigotavr/"
@@ -87,7 +98,10 @@
               >
                 <button
                   @click=""
-                  :class="item.hoverButton + ' bg-white inline-flex w-fit px-[24px] py-[12px] rounded-full text-[16px] satoshi font-medium flex items-center justify-center text-center btn-case'"
+                  :class="
+                    item.hoverButton +
+                    ' bg-white inline-flex w-fit px-[24px] py-[12px] rounded-full text-[16px] satoshi font-medium flex items-center justify-center text-center btn-case'
+                  "
                 >
                   View Case Study
                   <img
@@ -96,9 +110,7 @@
                     alt="arrow-black"
                   />
                 </button>
-
               </a>
-              
             </div>
 
             <!-- Image -->
@@ -113,7 +125,6 @@
             </div>
           </div>
         </div>
-
       </a>
     </div>
   </section>
@@ -121,52 +132,10 @@
 
 <script setup>
 import CountUpNumber from "@/components/CountUpNumber.vue";
-
-const hoverAnimation = "transition-colors duration-400"; // transition duration for hover effects
-const cases = [
-  {
-    slug: "vivo",
-    title: "Vivo",
-    subtitle: "Unifying Product Acquisition Flow",
-    tags: [
-      ["Health / EdTech", "B2C SaaS", "Startup"],
-      ["iOS", "Product Design", "AI Content"],
-    ],
-    stats: [
-      { prefix: "x", value: 7, label: "Flows unified" },
-      { value: 15, label: "Designers project" },
-      { value: 87, label: "Usability score" },
-    ],
-    image: "/src/assets/image/case1.png",
-    hoverText: hoverAnimation + " group-hover:text-[#C480E6]",
-    hoverBorder: hoverAnimation + " group-hover:border-[#C480E6]",
-    hoverButton: hoverAnimation + " group-hover:bg-[#C480E6]",
-    dotColor: "text-[#8900CD]",
-  },
-  {
-    slug: "webquiz",
-    title: "WebQuiz",
-    subtitle: "Join the Brain Geek Paradise",
-    tags: [
-      ["Web & Mobile", "User Research"],
-      ["Trivia", "B2C", "Startup", "CJM"],
-      ["Product Design", "Product Management"],
-    ],
-    stats: [
-      { prefix: "x", value: 7, label: "Flows unified" },
-      { value: 15, label: "Designers project" },
-      { value: 87, label: "Usability score" },
-    ],
-    image: "/src/assets/image/case2.png",
-    hoverText: hoverAnimation + " group-hover:text-[#F77D32]",
-    hoverBorder: hoverAnimation + " group-hover:border-[#F77D32]",
-    hoverButton: hoverAnimation + " group-hover:bg-[#F77D32]",
-    dotColor: "text-[#FF9500]",
-  },
-];
+import cases from "@/components/TavWork/cases";
 </script>
 
-<style scoped>    
+<style scoped>
 .btn-case {
   color: black;
   transition:

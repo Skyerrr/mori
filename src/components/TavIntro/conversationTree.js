@@ -10,93 +10,326 @@ function makeNode(key, { response, subtitle, buttons }) {
     }))
   }
 }
+function textLinkImg(label, link) {
+  return `<a
+    href="${link}"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="arrow-gray-wrapper group inline-flex items-center gap-1 ml-1 align-baseline text-white hover:text-[#71717A] transition-colors duration-300"
+  ><span class="underline">${label}</span><img
+    src="src/assets/image/arrow.svg"
+    alt=""
+    class="inline-block translate-y-[3px] arrow-gray"
+  /></a>`
+}
+
+function textLink(label, link) {
+  return `<a
+    href="${link}"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="arrow-gray-wrapper group inline-flex items-center gap-1 ml-1 align-baseline text-white hover:text-[#71717A] transition-colors duration-300"
+  ><span class="underline">${label}</span></a>`
+}
+
+
 
 export const conversationTree = {
   start: makeNode('start', {
-    response: 'A product designer A product designer A product designer A product designer A product designer A product designer A product designer A product designer A product designer ',
-    subtitle: '– versatile, crafty and idealist.',
+    response: `A product designer<br>— versatile, crafty and idealist.${textLinkImg('Resum22e', "https://google.com.br")}`,
+    subtitle: '',
     buttons: [
-      { label: 'Hi Tav!', nextNodeId: 'greeting' },
-      { label: 'Wait, can I answer you?', nextNodeId: 'answer' },
-      { label: 'Just show me your work', nextNodeId: 'work' }
+      { label: 'Hi Tav!', nextNodeId: 'ph1'},
+      { label: 'Wait, can I answer you?', nextNodeId: 'meta1'},
+      { label: 'Show me your work', nextNodeId: 'work'},
+      { label: 'Tell me something funny', nextNodeId: 'jk1'}
     ]
   }),
-
-  greeting: makeNode('greeting', {
-    response: 'Hey there! 👋',
-    subtitle: 'Nice to meet you.',
+  ph1: makeNode('ph1', {
+    response: `I think design should be simple and natural<br>Just like a conversation`,
+    subtitle: '',
     buttons: [
-      { label: 'Tell me about yourself', nextNodeId: 'about' },
-      { label: 'What have you built?', nextNodeId: 'work' },
-      { label: 'Let\'s chat', nextNodeId: 'contact' }
+      { label: 'Why?', nextNodeId: 'ph2'},
+      { label: 'I agree', nextNodeId: 'ph_topic1'},
+      { label: 'Is thid AI?', nextNodeId: 'case_Fgarden2'},
+      { label: 'Show me your work', nextNodeId: 'work '} 
     ]
   }),
-
-  answer: makeNode('answer', {
-    response: 'Of course!',
-    subtitle: 'I\'m all ears. What would you like to know?',
+  ph2: makeNode('ph2', {
+    response: `The best interfaces behave like good listeners<br>clear, contextual and reciprocal.`,
+    subtitle: '',
     buttons: [
-      { label: 'How do you approach design?', nextNodeId: 'approach' },
-      { label: 'What tools do you use?', nextNodeId: 'tools' },
-      { label: 'Never mind, show me work', nextNodeId: 'work' }
+      { label: 'Keep yapping', nextNodeId: 'ph3'},
+      { label: 'I wanna talk about other thing', nextNodeId: 'ph_topic2'},
+      { label: 'Show me your work', nextNodeId: 'work'} 
     ]
   }),
-
-  about: makeNode('about', {
-    response: 'I design thoughtful digital experiences',
-    subtitle: 'Focusing on the intersection of form and function.',
+  ph3: makeNode('ph3', {
+    response: `Clarity is my favourite feature<br>Empathy is my favourite tool.`,
+    subtitle: '',
     buttons: [
-      { label: 'What\'s your design philosophy?', nextNodeId: 'approach' },
-      { label: 'Show me your portfolio', nextNodeId: 'work' },
-      { label: 'Back to start', nextNodeId: 'start' }
+      { label: 'So you’re mr nice designer, huh?', nextNodeId: 'ph4'},
+      { label: 'Are you like this at work?', nextNodeId: 'egg2'},
+      { label: 'Bro be normal', nextNodeId: 'egg1'} 
     ]
   }),
-
-  approach: makeNode('approach', {
-    response: 'I believe in design that serves people',
-    subtitle: 'Not trends. Every pixel should have purpose.',
+ ph4: makeNode('ph4', {
+    response: `Nice just means I don’t need to win every argument<br>to make the product win`,
+    subtitle: '',
     buttons: [
-      { label: 'Let\'s work together', nextNodeId: 'contact' },
-      { label: 'Show me examples', nextNodeId: 'work' },
-      { label: 'Back to start', nextNodeId: 'start' }
+      { label: 'Ouch', nextNodeId: 'ph_topic3'},
+      { label: 'Are you like this at work?', nextNodeId: 'egg2'},
+      { label: 'Bro be normal', nextNodeId: 'egg1'} 
     ]
   }),
-
-  tools: makeNode('tools', {
-    response: 'I work with Figma, Code, and everything in between',
-    subtitle: 'The tool is just the medium. Ideas come first.',
+ ph_topic3: makeNode('ph_topic3', {
+    response: `Sorry😅<br>You choose the next topic.`,
+    subtitle: '',
     buttons: [
-      { label: 'See what I\'ve made', nextNodeId: 'work' },
-      { label: 'How can we collaborate?', nextNodeId: 'contact' },
-      { label: 'Back to start', nextNodeId: 'start' }
+      { label: 'Tell me about yourself', nextNodeId: 'p1'},
+      { label: 'Accessibillity!', nextNodeId: 'acc1'},
+      { label: 'AI', nextNodeId: 'ai1'},
+      { label: 'Work', nextNodeId: 'd1'},
+      { label: 'Jokes', nextNodeId: 'jk1'},
+      { label: 'What is this feature?', nextNodeId: 'garden2'} 
     ]
   }),
-
-  work: makeNode('work', {
-    response: 'Check out my recent projects',
-    subtitle: 'Each one a lesson in design and problem-solving.',
+ meta1: makeNode('meta1', {
+    response: `Sort of.<br>It’s a conversational feature<br>you click, I reply, and we see where it goes.`,
+    subtitle: '',
     buttons: [
-      { label: 'Visit portfolio', nextNodeId: 'portfolio' },
-      { label: 'Let\'s collaborate', nextNodeId: 'contact' },
-      { label: 'Back to start', nextNodeId: 'start' }
+      { label: 'Tell me something meaningful', nextNodeId: 'ph1'},
+      { label: 'Tell me more about this tool', nextNodeId: 'garden1'},
+      { label: 'What else can we talk about?', nextNodeId: 'meta_topic'} 
     ]
   }),
-
-  portfolio: makeNode('portfolio', {
-    response: 'Portfolio coming soon',
-    subtitle: 'In the meantime, feel free to reach out.',
+ ph_topic1: makeNode('ph_topic1', {
+    response: `And just  like on every conversation, you got to  chose<br>What do you want to talk about?`,
+    subtitle: '',
     buttons: [
-      { label: 'Contact me', nextNodeId: 'contact' },
-      { label: 'Back to start', nextNodeId: 'start' }
+      { label: 'Tell me about yourself', nextNodeId: 'p1'},
+      { label: 'Accessibillity!', nextNodeId: 'acc1'},
+      { label: 'AI', nextNodeId: 'ai1'}, 
+      { label: 'Work', nextNodeId: 'd1'},
+      { label: 'Jokes', nextNodeId: 'jk1'},
+      { label: 'What is this feature?', nextNodeId: 'garden2'} 
     ]
   }),
-
-  contact: makeNode('contact', {
-    response: 'Let\'s create something amazing',
-    subtitle: 'Drop me a line and let\'s talk ideas.',
+ p1: makeNode('p1', {
+    response: `I’m a service designer disguised as a product designer<br>or the opposite, depending on who’s asking.`,
+    subtitle: '',
     buttons: [
-      { label: 'Email: hello@tav.design', nextNodeId: 'contact' },
-      { label: 'Back to start', nextNodeId: 'start' }
+      { label: 'Tell me more', nextNodeId: 'p2'},
+      { label: 'How would you define Product Design?', nextNodeId: 'pd1'},
+      { label: 'How would you define Service Design?', nextNodeId: 'sd1'}, 
+      { label: 'I want to change topics', nextNodeId: 'ph_topic2'}
     ]
-  })
+  }),
+ p2: makeNode('p2', {
+    response: `I design like I talk: direct, honest and a bit idealistic.`,
+    subtitle: '',
+    buttons: [
+      { label: 'Tell me more', nextNodeId: 'p3'},
+      { label: 'So be direct with me', nextNodeId: 'p2_2'},
+      { label: 'Show me your work', nextNodeId: 'work'}
+    ]
+  }),
+ p3: makeNode('p3', {
+    response: `I enjoy solving hard problems.<br>The harder the better.`,
+    subtitle: '',
+    buttons: [
+      { label: 'Tell me more', nextNodeId: 'p4'},
+      { label: 'You sound arrogant', nextNodeId: 'egg3'},
+      { label: 'I want to change topics', nextNodeId: 'ph_topic2'}
+    ]
+  }),
+ p4: makeNode('p4', {
+    response: `Most design problems are misunderstandings<br>waiting for someone to listen properly.`,
+    subtitle: '',
+    buttons: [
+      { label: 'Keep yapping', nextNodeId: 'p5'},
+      { label: 'Tell me something you’re into', nextNodeId: 'garden1'},
+      { label: 'I want to change topics', nextNodeId: 'ph_topic2'}
+    ]
+  }),
+ p5: makeNode('p5', {
+    response: `If it only looks good, it’s a facelift.<br>If it works, it’s design.<br>If it changes behavior, it’s service`,
+    subtitle: '',
+    buttons: [
+      { label: 'I want more yapping!', nextNodeId: 'p6'},
+      { label: 'Tell me more about Product and Service', nextNodeId: 'pd1'},
+      { label: 'Why are you so cheesy', nextNodeId: 'egg1'},
+      { label: 'Bro be normal', nextNodeId: 'egg1'} 
+    ]
+  }),
+ p6: makeNode('p6', {
+    response: `Ok that’s all i got. <br>If you want more yap, let’s chat:<br>${textLink('rodrigotavr@gmail.com', "https://google.com.br")}`,
+    subtitle: '',
+    buttons: [
+      { label: 'Tell me more about Product and Service', nextNodeId: 'pd1'},
+      { label: 'I want to change topics', nextNodeId: 'ph_topic1'}
+    ]
+  }),
+p2_2: makeNode('p2_2', {
+    response: `What's your challenge?<br>And what’s slowing you down?<br>Tell me all about it: ${textLink('rodrigotavr@gmail.com', "https://google.com.br")}`,
+    subtitle: '',
+    buttons: [
+      { label: 'Tell me more about you', nextNodeId: 'p3'},
+      { label: 'I want to change topics', nextNodeId: 'ph_topic2'}
+  ]}),
+d1: makeNode('d1', {
+    response: `Having fun is the best way to get good at design.`,
+    subtitle: '',
+    buttons: [
+      { label: 'That is true', nextNodeId: 'p4'},
+      { label: 'Is that why you build this?', nextNodeId: 'd2'},
+      { label: 'I want to change topics', nextNodeId: 'ph_topic2'}
+  ]}),
+d2: makeNode('d2', {
+    response: `Actually yes😅`,
+    subtitle: '',
+    buttons: [
+      { label: 'And how did you do it?', nextNodeId: 'case_garden1'},
+      { label: 'Keep talking about design', nextNodeId: 'd2'},
+      { label: 'I want to change topics', nextNodeId: 'ph_topic2'}
+  ]}),
+meta_topic: makeNode('meta_topic', {
+    response: `More than you’d think, actually.<br>Choose a topic.`,
+    subtitle: '',
+    buttons: [
+      { label: 'Tell me about yourself', nextNodeId: 'p1'},
+      { label: 'Accessibillity!', nextNodeId: 'acc1'},
+      { label: 'AI', nextNodeId: 'ai1'}, 
+      { label: 'Work', nextNodeId: 'd1'},
+      { label: 'Jokes', nextNodeId: 'jk1'},
+      { label: 'What is this feature?', nextNodeId: 'garden2'} 
+  ]}),
+ph_topic2: makeNode('ph_topic2', {
+    response: `Conversations dont need to be linear.<br>What do you want to explore now?`,
+    subtitle: '',
+    buttons: [
+      { label: 'Tell me about yourself', nextNodeId: 'p1'},
+      { label: 'Accessibillity!', nextNodeId: 'acc1'},
+      { label: 'AI', nextNodeId: 'ai1'}, 
+      { label: 'Work', nextNodeId: 'd1'},
+      { label: 'Jokes', nextNodeId: 'jk1'},
+      { label: 'What is this feature?', nextNodeId: 'garden2'} 
+  ]}),
+ph_topic2: makeNode('ph_topic2', {
+    response: `Machines execute, humans chose.<br>Are you human?`,
+    subtitle: '',
+    buttons: [
+      { label: 'Tell me about yourself', nextNodeId: 'p1'},
+      { label: 'Accessibillity!', nextNodeId: 'acc1'},
+      { label: 'AI', nextNodeId: 'ai1'}, 
+      { label: 'Work', nextNodeId: 'd1'},
+      { label: 'Jokes', nextNodeId: 'jk1'},
+      { label: 'What is this feature?', nextNodeId: 'garden2'} 
+  ]}),
+ai_topic: makeNode('ai_topic', {
+    response: `Machines execute, humans chose.<br>Are you human?`,
+    subtitle: '',
+    buttons: [
+      { label: 'Tell me about yourself', nextNodeId: 'p1'},
+      { label: 'Accessibillity!', nextNodeId: 'acc1'},
+      { label: 'AI', nextNodeId: 'ai1'}, 
+      { label: 'Work', nextNodeId: 'd1'},
+      { label: 'Jokes', nextNodeId: 'jk1'},
+      { label: 'What is this feature?', nextNodeId: 'garden2'} 
+  ]}),
+acc_topic: makeNode('acc_topic', {
+    response: `Choice is cool.<br>Choice for everyone is cooler.<br>That’s accessibility.`,
+    subtitle: '',
+    buttons: [
+      { label: 'Tell me about yourself', nextNodeId: 'p1'},
+      { label: 'Accessibillity!', nextNodeId: 'acc1'},
+      { label: 'AI', nextNodeId: 'ai1'}, 
+      { label: 'Work', nextNodeId: 'd1'},
+      { label: 'Jokes', nextNodeId: 'jk1'},
+      { label: 'What is this feature?', nextNodeId: 'garden2'} 
+  ]}),
+jk_topic: makeNode('jk_topic', {
+    response: `Serious doesn’t mean boring — I promise. <br>Pick a topic.`,
+    subtitle: '',
+    buttons: [
+      { label: 'Tell me about yourself', nextNodeId: 'p1'},
+      { label: 'Accessibillity!', nextNodeId: 'acc1'},
+      { label: 'AI', nextNodeId: 'ai1'}, 
+      { label: 'Work', nextNodeId: 'd1'},
+      { label: 'Jokes', nextNodeId: 'jk1'},
+      { label: 'What is this feature?', nextNodeId: 'garden2'} 
+  ]}),
+garden_topic: makeNode('garden_topic', {
+    response: `Great!<br>Feel free to choose a topic.`,
+    subtitle: '',
+    buttons: [
+      { label: 'Tell me about yourself', nextNodeId: 'p1'},
+      { label: 'Accessibillity!', nextNodeId: 'acc1'},
+      { label: 'AI', nextNodeId: 'ai1'}, 
+      { label: 'Work', nextNodeId: 'd1'},
+      { label: 'Jokes', nextNodeId: 'jk1'},
+      { label: 'What is this feature?', nextNodeId: 'garden2'} 
+  ]}),
+pd1: makeNode('pd1', {
+    response: `Product design is the art of making <br>complex decisions feel obvious.`,
+    subtitle: '',
+    buttons: [
+      { label: 'What about service?', nextNodeId: 'case_garden1'},
+      { label: 'I want to talk about other thing', nextNodeId: 'ph_topic2'}
+  ]}),
+pd2: makeNode('pd2', {
+    response: `Service design is the choreography of interactions.<br>Human, digital, and everything in between.`,
+    subtitle: '',
+    buttons: [
+      { label: 'Very cool do you have a case where you apply both?', nextNodeId: 'case_service'},
+      { label: 'I want to talk about other thing', nextNodeId: 'ph_topic2'}
+  ]}),
+sd1: makeNode('sd1', {
+    response: `Service design is the choreography of interactions.<br>Human, digital, and everything in between.`,
+    subtitle: '',
+    buttons: [
+      { label: 'What about Product?', nextNodeId: 'sd2'},
+      { label: 'I want to talk about other thing', nextNodeId: 'ph_topic2'}
+  ]}),
+sd2: makeNode('sd2', {
+    response: `Product design is the art of making <br>complex decisions feel obvious.`,
+    subtitle: '',
+    buttons: [
+      { label: 'Very cool do you have a case where you apply both?', nextNodeId: 'case_service'},
+      { label: 'I want to talk about other thing', nextNodeId: 'ph_topic2'}
+  ]}),
+case_service: makeNode('case_service', {
+    response: `Sure, have a look on ${textLink('this link', "https://docs.google.com/presentation/d/1BrBduYvyLGTbzfZS1OyKVEwIW3sO2RDvKHdQFU18is4/edit?usp=sharing")}`,
+    subtitle: '',
+    buttons: [
+      { label: 'I want to talk about other thing', nextNodeId: 'ph_topic2'}
+  ]}),
+garden1: makeNode('garden1', {
+    response: `I love  conversational design,<br>thats why i built this Mind Garden.`,
+    subtitle: '',
+    buttons: [
+      { label: 'Why you call it Mind Garden?', nextNodeId: 'garden2'},
+      { label: 'How did you build this?', nextNodeId: 'case_garden1'},
+      { label: 'I want to talk about other thing', nextNodeId: 'ph_topic2'}
+  ]}),
+garden2: makeNode('garden2', {
+    response: `This is a tour through my mind<br>I believe ideas are better explored than explained<br>Welcome to my Mind Garden.`,
+    subtitle: '',
+    buttons: [
+      { label: 'Is this all AI?', nextNodeId: 'garden2'},
+      { label: 'How did you build this?', nextNodeId: 'case_garden1'},
+      { label: 'I want to explore!', nextNodeId: 'garden_topic2'}
+  ]}),
+case_garden1: makeNode('case_garden1', {
+    response: `You can click on ${textLink('this link', "https://docs.google.com/presentation/d/1BrBduYvyLGTbzfZS1OyKVEwIW3sO2RDvKHdQFU18is4/edit?usp=sharing")} and I will show you`,
+    subtitle: '',
+    buttons: [
+      { label: 'I want to talk about other thing', nextNodeId: 'ph_topic2'}
+  ]}),
+case_garden2: makeNode('case_garden2', {
+    response: `Actually, this is just a conversational flow<br>You can click on ${textLink('this link', "https://docs.google.com/presentation/d/1BrBduYvyLGTbzfZS1OyKVEwIW3sO2RDvKHdQFU18is4/edit?usp=sharing")} and I will show you`,
+    subtitle: '',
+    buttons: [
+      { label: 'I want to talk about other thing', nextNodeId: 'ph_topic2'}
+  ]}),
 }

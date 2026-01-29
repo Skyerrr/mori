@@ -1,5 +1,5 @@
 <template>
-  <div class=" bg-black text-white py-20">
+  <div class=" bg-black text-white px-4 md:px-0 pt-20 pb-6 md:pb-0 md:py-20">
     <div class="mx-auto relative">
 
       <!-- Vertical line -->
@@ -7,11 +7,11 @@
         class="absolute left-[1.3rem] top-0 w-0.5 bg-white/100"
         :style="{ height: lineHeight + 'px' }"
       ></div>
-
+ 
       <div
         v-for="(item, idx) in timeline"
         :key="item.year"
-        class="flex gap-10 mb-14 relative text-[16px]"
+        class="flex gap-4 mb-14 relative text-[16px]"
         ref="rows"
       >
         <!-- Year bubble -->
@@ -25,8 +25,8 @@
 
         <!-- Content -->
         <div class="">
-          <h3 class="text-[clamp(14px,4vw,24px)] inter font-bold">{{ item.title }}</h3>
-          <p class="mt-2 text-[#71717A] leading-relaxed text-[clamp(12px,2vw,20px)] inter font-bold">
+          <h3 class="text-[clamp(16px,4vw,24px)] inter font-bold">{{ item.title }}</h3>
+          <p class="mt-2 text-[#71717A] leading-relaxed text-[clamp(14px,2vw,20px)] inter font-bold">
             {{ item.description }}
           </p>
         </div>
@@ -87,7 +87,7 @@ onMounted(async () => {
     const containerTop = lastRow.parentElement.getBoundingClientRect().top;
     const bubbleTop = bubble.getBoundingClientRect().top;
     const bubbleHeight = bubble.offsetHeight;
-    lineHeight.value = bubbleTop - containerTop + bubbleHeight / 2;
+    lineHeight.value = bubbleTop - containerTop + bubbleHeight / 2 + 10;
   }
 });
 </script>

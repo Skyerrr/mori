@@ -26,10 +26,9 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 
 const images = ref([
-  'https://picsum.photos/395/483?6',
-  'https://picsum.photos/395/483?7',
-  'https://picsum.photos/395/483?8',
-  'https://picsum.photos/395/483?9'
+  'src/assets/image/refer1.png',
+  'src/assets/image/refer2.png',
+  'src/assets/image/refer3.png',
 ])
 
 const duplicatedImages = computed(() => [...images.value, ...images.value])

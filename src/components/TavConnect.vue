@@ -17,18 +17,22 @@
       </div>
     </div>
 
-    <div class="flex flex-col lg:flex-row justify-between items-start w-full py-6 text-white mt-12 lg:mt-24">
+    <div
+      class="flex flex-col lg:flex-row justify-between items-start w-full py-6 text-white mt-12 lg:mt-24"
+    >
       <!-- Left content -->
       <div class="flex flex-col gap-6 lg:gap-8 w-full lg:w-auto">
         <div class="text-left">
-          <HoverArrowButton
-            class="text-[32px] sm:text-[36px] md:text-[42px] lg:text-[48px] recoleta tracking-[1.8px]"
-            text="rodrigotavr@gmail.com"
-            :arrowSrc="Arrow"
-            defaultColor="#fff"
-            hoverColor="#71717A"
-            arrowClass="h-[36px] sm:h-[42px] lg:h-[52px] mt-1"
-          />
+          <a href="mailto:rodrigotavr@gmail.com">
+            <HoverArrowButton
+              class="text-[32px] sm:text-[36px] md:text-[42px] lg:text-[48px] recoleta tracking-[1.8px]"
+              text="rodrigotavr@gmail.com"
+              :arrowSrc="Arrow"
+              defaultColor="#fff"
+              hoverColor="#71717A"
+              arrowClass="h-[36px] sm:h-[42px] lg:h-[52px] mt-1"
+            />
+          </a>
         </div>
 
         <div class="text-left flex flex-col sm:flex-row gap-4 sm:gap-8">
@@ -63,10 +67,14 @@
       <div
         class="mt-8 lg:mt-6 text-left lg:text-right w-full lg:w-auto flex flex-col gap-2 lg:gap-3"
       >
-        <span class="text-[24px] sm:text-[28px] md:text-[30px] lg:text-[32px] recoleta tracking-[1.8px]">
+        <span
+          class="text-[24px] sm:text-[28px] md:text-[30px] lg:text-[32px] recoleta tracking-[1.8px]"
+        >
           Brazil
         </span>
-        <span class="text-[#71717A] text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px]">
+        <span
+          class="text-[#71717A] text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px]"
+        >
           Copacabana
         </span>
       </div>
