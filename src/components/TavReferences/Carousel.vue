@@ -26,9 +26,9 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 
 const images = ref([
-  'src/assets/image/refer1.png',
-  'src/assets/image/refer2.png',
-  'src/assets/image/refer3.png',
+  '/src/assets/image/refer1.png',
+  '/src/assets/image/refer2.png',
+  '/src/assets/image/refer3.png',
 ])
 
 const duplicatedImages = computed(() => [...images.value, ...images.value])
