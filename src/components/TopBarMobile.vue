@@ -19,7 +19,7 @@
         <button @click="scrollToTarget('work', -30)">Work</button>
         <button @click="scrollToTarget('journey', -30)">About me</button>
         <button @click="scrollToTarget('connect')">Contact</button>
-        <a href="@/assets/files/arrow.svg"> Resume </a>
+        <a href="/RODRIGOTAVARESCV.pdf" download> Resume </a>
         <a
           href="https://www.linkedin.com/in/rodrigotavr/"
           target="_blank"

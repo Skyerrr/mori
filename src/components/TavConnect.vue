@@ -36,7 +36,7 @@
         </div>
 
         <div class="text-left flex flex-col sm:flex-row gap-4 sm:gap-8">
-          <a href="@/assets/files/arrow.svg" download>
+          <a href="/RODRIGOTAVARESCV.pdf" download>
             <HoverArrowButton
               class="text-[14px] sm:text-[16px] satoshi font-normal"
               text="Download full resume"

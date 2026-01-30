@@ -54,7 +54,7 @@
         </li>
         <li class="">
           <a
-            href="@/assets/files/arrow.svg" download
+            href="/RODRIGOTAVARESCV.pdf" download
             class="flex justify-center items-center w-18 h-7 relative text-hover-vertical center-all cursor-pointer"
           >
             <span>Resume</span>

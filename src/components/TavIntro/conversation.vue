@@ -73,7 +73,7 @@ const canReset = computed(() => currentNodeId.value !== "start")
 /**
  * Typing engine that supports HTML, links and images
  */
-const typeText = async (html, speed = 28) => {
+const typeText = async (html, speed = 20) => {
   isTyping.value = true
   typedResponse.value = ""
 
