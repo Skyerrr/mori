@@ -117,7 +117,7 @@
                 >
                   View Case Study
                   <img
-                    src="@/assets/image/Arrow.png"
+                    src="/src/assets/image/Arrow.png"
                     class="ml-3 arrow-black"
                     alt="arrow-black"
                   />

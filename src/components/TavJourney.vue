@@ -9,7 +9,7 @@
 
     <div class="flex flex-wrap justify-center gap-4 w-full max-w-8xl">
       <div class="flex-shrink-0">
-        <a href="@/assets/files/arrow.svg" download>
+        <a href="/src/assets/files/arrow.svg" download>
           <button
             @click=""
             class="w-[233px] h-[52px] rounded-full text-[16px] satoshi font-medium flex items-center justify-center text-center btn-ani arrow-wrapper cursor-pointer"

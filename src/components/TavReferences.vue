@@ -21,7 +21,7 @@
           >
             Linkedin Profile
             <img
-              src="@/assets/image/Arrow.png"
+              src="/src/assets/image/Arrow.png"
               class="ml-3 arrow"
               alt="arrow"
             />
