@@ -83,7 +83,7 @@
 </template>
 
 <script setup>
-import VerticalHoverText from "/src/components/VerticalHoverText.vue";
-import HoverArrowButton from "/src/components/HoverArrowButton.vue";
-import Arrow from "/src/assets/image/arrow.svg";
+import VerticalHoverText from "@/components/VerticalHoverText.vue";
+import HoverArrowButton from "@/components/HoverArrowButton.vue";
+import Arrow from "@/assets/image/arrow.svg";
 </script>

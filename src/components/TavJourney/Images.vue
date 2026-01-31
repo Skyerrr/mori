@@ -28,13 +28,13 @@
 <script setup>
 import { ref, onMounted, onUnmounted, nextTick } from 'vue'
 
-import luma from '/src/assets/image/luma.png'
-import accenture from '/src/assets/image/accenture.png'
-import nubank from '/src/assets/image/nubank.png'
-import pollux from '/src/assets/image/pollux.png'
-import santander from '/src/assets/image/santander.png'
-import equatorial from '/src/assets/image/equatorial.png'
-import vivo from '/src/assets/image/vivo.png'
+import luma from '@/assets/image/luma.png'
+import accenture from '@/assets/image/accenture.png'
+import nubank from '@/assets/image/nubank.png'
+import pollux from '@/assets/image/pollux.png'
+import santander from '@/assets/image/santander.png'
+import equatorial from '@/assets/image/equatorial.png'
+import vivo from '@/assets/image/vivo.png'
 
 const baseImages = [
   luma,

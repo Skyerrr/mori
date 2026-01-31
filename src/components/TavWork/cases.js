@@ -1,5 +1,8 @@
 const hoverAnimation = "transition-colors duration-400";
-
+import case1 from '@/assets/image/case1.png';
+import case1Mobile from '@/assets/image/case1-mobile.png';
+import case2 from '@/assets/image/case2.png';
+import case2Mobile from '@/assets/image/case2-mobile.png';
 const cases = [
   {
     slug: "vivo",
@@ -14,8 +17,8 @@ const cases = [
       { value: 15, label: "Designers project" },
       { value: 87, label: "Usability score" },
     ],
-    image: "/src/assets/image/case1.png",
-    mobileImage: "/src/assets/image/case1-mobile.png",
+    image: case1,
+    mobileImage: case1Mobile,
 
     hoverText: `${hoverAnimation} text-[#C480E6] lg:group-hover:text-[#C480E6]`,
     hoverBorder: `${hoverAnimation} border-[#C480E6] lg:group-hover:border-[#C480E6]`,
@@ -37,8 +40,8 @@ const cases = [
       { value: 95, suffix: "%", label: "Accuracy" },
       { value: 0, label: "Training" },
     ],
-    image: "/src/assets/image/case2.png",
-    mobileImage: "/src/assets/image/case2-mobile.png",
+    image: case2,
+    mobileImage: case2Mobile,
 
     hoverText: `${hoverAnimation} text-[#F77D32] lg:group-hover:text-[#F77D32]`,
     hoverBorder: `${hoverAnimation} border-[#F77D32] lg:group-hover:border-[#F77D32]`,
