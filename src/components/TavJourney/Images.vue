@@ -1,7 +1,7 @@
 <template>
   <div
     ref="container"
-    class="overflow-hidden mx-4 "
+    class="overflow-hidden mx-4"
     @mouseenter="hovering = true"
     @mouseleave="hovering = false"
   >

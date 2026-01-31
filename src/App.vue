@@ -1,17 +1,17 @@
 <template>
-<div class="bg-color max-w-[1920px]">
-<TopBar class="hidden md:block" />
+<div class="bg-color">
+<TopBar class="hidden md:block mb-6" />
 <TopBarMobile class="block md:hidden" />
 
 <div id="intro" class="flex flex-col w-full">
   <div class="mb-24 flex flex-col w-full">
-    <TavIntro class="flex-1 w-full" />
+    <TavIntro class="flex-1 w-full " />
   </div>
     <div id="work" class="mb-24 flex flex-col w-full ">
     <TavWork class="flex-1 w-full" />
   </div>
   <div id="journey" class="mb-24 flex flex-col w-full ">
-    <TavJourney class="flex-1 w-full" />
+    <TavJourney class="flex-1 w-full items-center" />
   </div>
   <div id="references" class="flex flex-col w-full">
     <TavReferences class="flex-1 w-full" />

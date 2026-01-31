@@ -7,8 +7,8 @@
     <Images />
     <Timeline />
 
-    <div class="flex flex-wrap justify-center gap-4 w-full max-w-8xl">
-      <div class="flex-shrink-0">
+    <div class="flex flex-wrap justify-center gap-4 w-full max-w-8xl ">
+      <div class="flex-shrink-0 ">
         <a href="@/assets/files/arrow.svg" download>
           <button
             @click=""

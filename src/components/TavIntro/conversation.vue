@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-full relative mt-16 sm:mt-32 md:mt-32 lg:mt-40 2xl:mt-52 mb-16 sm:mb-28 md:mb-40"
+    class="w-full relative mt-16 sm:mt-32 md:mt-32 lg:mt-40 2xl:mt-40 mb-10 sm:mb-28 md:mb-40"
   >
     
       <div
@@ -9,7 +9,7 @@
       >
         <!-- Typed response -->
         <p
-          class="text-[clamp(22px,3vw,64px)] text-white font-light mb-2 recoleta-font typing"
+          class="text-[clamp(22px,7vw,64px)] text-white font-light mb-2 recoleta-font typing"
         >
           <span v-html="typedResponse"></span>
           <span v-if="isTyping" class="caret"></span>
@@ -28,7 +28,7 @@
 
   <!-- Buttons -->
   <div
-    class="flex flex-wrap justify-center gap-4 w-full max-w-8xl mt-60 sm:mt-48 md:mt-48"
+    class="flex flex-wrap justify-center gap-4 w-full max-w-8xl mt-60 sm:mt-36 md:mt-48"
   >
     <div
       v-for="button in currentNode?.buttons || []"

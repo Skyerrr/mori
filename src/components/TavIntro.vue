@@ -4,7 +4,7 @@
   >
     <!-- Header -->
     <h1
-      class="text-white font-normal tracking-[1.8px] text-[clamp(54px,10vw,720px)] leading-[1] sm:leading-[0.9]"
+      class="text-white font-normal tracking-[1.8px] text-[clamp(54px,12vw,172px)] leading-[1] sm:leading-[0.9]"
       style="font-family: Recoleta"
     >
       Hey i’m Tav

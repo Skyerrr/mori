@@ -47,7 +47,7 @@
                   <template v-for="(tag, tIndex) in row" :key="tag">
                     <span
                       :class="
-                        item.hoverBorder +
+                        item.hoverPillBorder +
                         ' px-4 py-1.5 border border-[#2e2e2e] rounded-full text-zinc-300 bg-[#171717] text-[clamp(12px,1vw,16px)]'
                       "
                     >

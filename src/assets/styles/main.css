@@ -138,6 +138,24 @@
 
 }
 
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  background: black;
+}
+
+#app {
+  width: 100%;
+  max-width: 1920px; /* or 1600 / 1440 — pick your design width */
+  margin: 0 auto;
+}
+
 
 
 /* Utility classes */

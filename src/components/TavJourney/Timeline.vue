@@ -1,5 +1,5 @@
 <template>
-  <div class=" bg-black text-white px-4 md:px-0 pt-20 pb-6 md:pb-0 md:py-20">
+  <div class=" bg-black text-white px-4 md:px-0 pt-20 pb-6 md:pb-0 md:py-20 ">
     <div class="mx-auto relative">
 
       <!-- Vertical line -->
