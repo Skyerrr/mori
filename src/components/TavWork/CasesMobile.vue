@@ -61,7 +61,7 @@
                       :ref="(el) => registerTag(el, rIndex, tIndex)"
                       :class="
                         item.hoverBorder +
-                        ' px-3 max-[361px]:px-2 py-1.5 border border-[#2e2e2e] rounded-full text-zinc-300 bg-[#171717] text-[clamp(12px,2.9vw,16px)]'
+                        ' px-2 max-[361px]:px-1.5 py-1.5 border border-[#2e2e2e] rounded-full text-zinc-300 bg-[#171717] text-[clamp(12px,2.2vw,16px)]'
                       "
                     >
                       {{ tag }}
@@ -70,7 +70,7 @@
                     <span
                       v-if="tIndex < row.length - 1"
                       :ref="(el) => registerDot(el, rIndex, tIndex)"
-                      :class="item.dotColor + ' mt-2 -mx-0.5'"
+                      :class="item.dotColor + ' mt-2 '"
                     >
                       ·
                     </span>
