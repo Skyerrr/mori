@@ -5,12 +5,12 @@
     <!-- Header -->
     <div class="flex flex-col items-start gap-3 py-3 text-white w-full">
       <div
-        class="text-center recoleta font-normal mb-6 text-[48px] sm:text-[64px] md:text-[96px] lg:text-[128px] leading-[1.1] tracking-[1.8px]"
+        class="text-center recoleta font-normal mb-6 text-[48px] sm:text-[64px] md:text-[96px] lg:text-[172px] x1:text-[200px] 2x1:text-[200px] leading-[1.1] tracking-[1.8px]"
       >
         Lets connect
       </div>
       <div
-        class="text-left text-[#71717A] satoshi font-medium text-[20px] sm:text-[24px] md:text-[32px] lg:text-[40px] leading-[1.2]"
+        class="text-left text-[#71717A] satoshi font-medium text-[20px] sm:text-[24px] md:text-[32px] lg:text-[48px] x1:text-[48px] 2x1:text-[48px] leading-[1.2]"
       >
         I like to think good design starts with curiosity.<br />
         If you felt any of that here, i think we should talk.

@@ -1,3 +1,23 @@
+const scrollToTarget = (targetId, offset = 0) => {
+  const el = document.getElementById(targetId);
+  if (!el) return;
+
+  const y = el.getBoundingClientRect().top + window.pageYOffset + offset;
+
+  window.scrollTo({
+    top: y,
+    behavior: "smooth",
+  });
+};
+
+function scrollButton(label, targetId, offset = 0) {
+  return {
+    label,
+    nextNodeId: null, // no normal node navigation
+    onClick: () => scrollToTarget(targetId, offset),
+  };
+}
+
 // helper to auto-generate node + button ids
 function makeNode(key, { response, subtitle, buttons }) {
   return {
@@ -41,7 +61,7 @@ export const conversationTree = {
     buttons: [
       { label: 'Hi Tav!', nextNodeId: 'ph1'},
       { label: 'Wait, can I answer you?', nextNodeId: 'meta1'},
-      { label: 'Show me your work', nextNodeId: 'work'},
+      scrollButton('Show me your work', 'work', -55),
       { label: 'Tell me something funny', nextNodeId: 'jk1'}
     ]
   }),
@@ -51,7 +71,7 @@ export const conversationTree = {
     buttons: [
       { label: 'Why?', nextNodeId: 'ph2'},
       { label: 'I agree', nextNodeId: 'ph_topic1'},
-      { label: 'Is thid AI?', nextNodeId: 'case_Fgarden2'},
+      { label: 'Is thid AI?', nextNodeId: 'case_garden2'},
       { label: 'Show me your work', nextNodeId: 'work '} 
     ]
   }),
@@ -89,7 +109,7 @@ export const conversationTree = {
       { label: 'Tell me about yourself', nextNodeId: 'p1'},
       { label: 'Accessibillity!', nextNodeId: 'acc1'},
       { label: 'AI', nextNodeId: 'ai1'},
-      { label: 'Work', nextNodeId: 'd1'},
+      { label: 'Design', nextNodeId: 'd1'},
       { label: 'Jokes', nextNodeId: 'jk1'},
       { label: 'What is this feature?', nextNodeId: 'garden2'} 
     ]
@@ -110,7 +130,7 @@ export const conversationTree = {
       { label: 'Tell me about yourself', nextNodeId: 'p1'},
       { label: 'Accessibillity!', nextNodeId: 'acc1'},
       { label: 'AI', nextNodeId: 'ai1'}, 
-      { label: 'Work', nextNodeId: 'd1'},
+      { label: 'Design', nextNodeId: 'd1'},
       { label: 'Jokes', nextNodeId: 'jk1'},
       { label: 'What is this feature?', nextNodeId: 'garden2'} 
     ]
@@ -190,7 +210,7 @@ d2: makeNode('d2', {
     subtitle: '',
     buttons: [
       { label: 'And how did you do it?', nextNodeId: 'case_garden1'},
-      { label: 'Keep talking about design', nextNodeId: 'd2'},
+      { label: 'Keep talking about design', nextNodeId: 'p4'},
       { label: 'I want to change topics', nextNodeId: 'ph_topic2'}
   ]}),
 meta_topic: makeNode('meta_topic', {
@@ -200,7 +220,7 @@ meta_topic: makeNode('meta_topic', {
       { label: 'Tell me about yourself', nextNodeId: 'p1'},
       { label: 'Accessibillity!', nextNodeId: 'acc1'},
       { label: 'AI', nextNodeId: 'ai1'}, 
-      { label: 'Work', nextNodeId: 'd1'},
+      { label: 'Design', nextNodeId: 'd1'},
       { label: 'Jokes', nextNodeId: 'jk1'},
       { label: 'What is this feature?', nextNodeId: 'garden2'} 
   ]}),
@@ -211,7 +231,7 @@ ph_topic2: makeNode('ph_topic2', {
       { label: 'Tell me about yourself', nextNodeId: 'p1'},
       { label: 'Accessibillity!', nextNodeId: 'acc1'},
       { label: 'AI', nextNodeId: 'ai1'}, 
-      { label: 'Work', nextNodeId: 'd1'},
+      { label: 'Design', nextNodeId: 'd1'},
       { label: 'Jokes', nextNodeId: 'jk1'},
       { label: 'What is this feature?', nextNodeId: 'garden2'} 
   ]}),
@@ -222,7 +242,7 @@ ai_topic: makeNode('ai_topic', {
       { label: 'Tell me about yourself', nextNodeId: 'p1'},
       { label: 'Accessibillity!', nextNodeId: 'acc1'},
       { label: 'AI', nextNodeId: 'ai1'}, 
-      { label: 'Work', nextNodeId: 'd1'},
+      { label: 'Design', nextNodeId: 'd1'},
       { label: 'Jokes', nextNodeId: 'jk1'},
       { label: 'What is this feature?', nextNodeId: 'garden2'} 
   ]}),
@@ -233,7 +253,7 @@ acc_topic: makeNode('acc_topic', {
       { label: 'Tell me about yourself', nextNodeId: 'p1'},
       { label: 'Accessibillity!', nextNodeId: 'acc1'},
       { label: 'AI', nextNodeId: 'ai1'}, 
-      { label: 'Work', nextNodeId: 'd1'},
+      { label: 'Design', nextNodeId: 'd1'},
       { label: 'Jokes', nextNodeId: 'jk1'},
       { label: 'What is this feature?', nextNodeId: 'garden2'} 
   ]}),
@@ -244,7 +264,7 @@ jk_topic: makeNode('jk_topic', {
       { label: 'Tell me about yourself', nextNodeId: 'p1'},
       { label: 'Accessibillity!', nextNodeId: 'acc1'},
       { label: 'AI', nextNodeId: 'ai1'}, 
-      { label: 'Work', nextNodeId: 'd1'},
+      { label: 'Design', nextNodeId: 'd1'},
       { label: 'Jokes', nextNodeId: 'jk1'},
       { label: 'What is this feature?', nextNodeId: 'garden2'} 
   ]}),
@@ -255,7 +275,7 @@ garden_topic: makeNode('garden_topic', {
       { label: 'Tell me about yourself', nextNodeId: 'p1'},
       { label: 'Accessibillity!', nextNodeId: 'acc1'},
       { label: 'AI', nextNodeId: 'ai1'}, 
-      { label: 'Work', nextNodeId: 'd1'},
+      { label: 'Design', nextNodeId: 'd1'},
       { label: 'Jokes', nextNodeId: 'jk1'},
       { label: 'What is this feature?', nextNodeId: 'garden2'} 
   ]}),
@@ -305,7 +325,7 @@ garden2: makeNode('garden2', {
     response: `This is a tour through my mind<br>I believe ideas are better explored than explained<br>Welcome to my Mind Garden.`,
     subtitle: '',
     buttons: [
-      { label: 'Is this all AI?', nextNodeId: 'garden2'},
+      { label: 'Is this all AI?', nextNodeId: 'case_garden2'},
       { label: 'How did you build this?', nextNodeId: 'case_garden1'},
       { label: 'I want to explore!', nextNodeId: 'garden_topic'}
   ]}),

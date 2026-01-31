@@ -1,11 +1,20 @@
 <template>
   <nav ref="navRef" class="sticky top-0 z-50 w-full relative">
     <!-- Top Bar -->
-    <div id="menu" :class="['topbar shadow-md py-3', { menu: open }]">
+    <div
+      id="menu"
+      class="topbar shadow-md py-3 transition-all duration-300"
+      :class="[
+        { menu: open },
+        showTopbar ? 'topbar-visible' : 'topbar-hidden'
+      ]"
+    >
       <div class="mx-auto flex justify-between px-6 md:px-20">
         <h1 class="satoshi font-black italic text-white text-[24px]">TAV</h1>
+
         <button class="md:hidden" @click.stop="open = !open">
-          <img src="@/assets/image/menu-icon.svg" />
+          <img v-if="!open" src="@/assets/image/menu-icon.svg" />
+          <img v-else src="@/assets/image/close-icon.svg" />
         </button>
       </div>
     </div>
@@ -19,7 +28,9 @@
         <button @click="scrollToTarget('work', -30)">Work</button>
         <button @click="scrollToTarget('journey', -30)">About me</button>
         <button @click="scrollToTarget('connect')">Contact</button>
+
         <a href="/RODRIGOTAVARESCV.pdf" download> Resume </a>
+
         <a
           href="https://www.linkedin.com/in/rodrigotavr/"
           target="_blank"
@@ -38,6 +49,31 @@ import { ref, onMounted, onBeforeUnmount } from "vue";
 const open = ref(false);
 const navRef = ref(null);
 
+/* ---------- hide / show on scroll ---------- */
+const showTopbar = ref(true);
+let lastScrollY = window.scrollY;
+
+const handleScroll = () => {
+  const currentScrollY = window.scrollY;
+
+  // do not hide while menu is open
+  if (open.value) {
+    showTopbar.value = true;
+    return;
+  }
+
+  if (currentScrollY > lastScrollY && currentScrollY > 50) {
+    // scrolling down
+    showTopbar.value = false;
+  } else {
+    // scrolling up
+    showTopbar.value = true;
+  }
+
+  lastScrollY = currentScrollY;
+};
+/* ------------------------------------------ */
+
 const handleClickOutside = (e) => {
   if (!navRef.value) return;
   if (!navRef.value.contains(e.target)) {
@@ -47,10 +83,12 @@ const handleClickOutside = (e) => {
 
 onMounted(() => {
   document.addEventListener("click", handleClickOutside);
+  window.addEventListener("scroll", handleScroll, { passive: true });
 });
 
 onBeforeUnmount(() => {
   document.removeEventListener("click", handleClickOutside);
+  window.removeEventListener("scroll", handleScroll);
 });
 
 const scrollToTarget = (target, offset = 0) => {
@@ -73,13 +111,28 @@ const scrollToTarget = (target, offset = 0) => {
   background: rgba(0, 0, 0, 0.75);
   -webkit-backdrop-filter: blur(2px);
   backdrop-filter: blur(2px);
-  transition: background-color 0.25s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+/* scroll states */
+.topbar-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.topbar-hidden {
+  opacity: 0;
+  transform: translateY(-100%);
+  pointer-events: none;
+}
+
+/* mobile menu */
 .menu {
   background: #171717 !important;
 }
 
+/* dropdown animation */
 .slide-enter-active,
 .slide-leave-active {
   transition: all 0.25s ease;

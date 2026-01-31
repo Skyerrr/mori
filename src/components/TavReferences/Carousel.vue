@@ -15,7 +15,7 @@
         v-for="(img, idx) in duplicatedImages"
         :key="idx"
         :src="img"
-        class="flex-shrink-0 w-[300px] h-[365px] sm:w-[300px] sm:h-[365px] lg:w-[395px] lg:h-[483px] object-cover rounded-xl"
+        class="flex-shrink-0 w-[300px] h-[365px] sm:w-[300px] sm:h-[365px] lg:w-[327px] lg:h-[400px] object-cover rounded-xl"
         alt="carousel image"
       />
     </div>

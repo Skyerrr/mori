@@ -25,7 +25,7 @@
           <div
             class="relative bg-[#171717] rounded-[40px] z-10 overflow-hidden flex flex-col lg:flex-row"
           >
-            <!-- Image (TOP on mobile, RIGHT on desktop) -->
+            
             <div
               class="w-full lg:w-1/2 h-[284px] sm:h-[300px] lg:h-auto rounded-t-[40px] lg:rounded-tr-[40px] lg:rounded-br-[40px] overflow-hidden"
             >
@@ -40,7 +40,7 @@
             <div
               class="flex flex-col px-[clamp(24px,5vw,80px)] py-[clamp(24px,6vw,80px)] lg:w-1/2"
             >
-              <div class="mb-8">
+              <div class="mb-4">
                 <p class="mb-2 text-[clamp(16px,1.5vw,24px)]">
                   <span :class="item.hoverText">{{ item.title }}</span>
                 </p>
@@ -77,7 +77,7 @@
                   </template>
                 </div>
 
-                <div class="h-px bg-[#2e2e2e] mt-6"></div>
+                <div class="h-px bg-[#2e2e2e] mt-0"></div>
 
                 <div
                   v-if="item.stats"

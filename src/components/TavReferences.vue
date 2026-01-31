@@ -1,10 +1,10 @@
 <template>
   <div
-    class="bg-black flex flex-col max-w-8xl mx-auto px-4 sm:px-6 md:px-10 lg:px-20 xl:px-32 relative satoshi-medium-font"
+    class="bg-black flex flex-col max-w-8xl mx-auto px-4 sm:px-6 md:px-10 lg:px-20 xl:px-28 relative satoshi-medium-font"
 
   >
     <TopText />
-    <Carousel class="mb-12 sm:mb-32 -mt-12 sm:mt-0" />
+    <Carousel class="mb-12 sm:mb-28 -mt-12 sm:mt-0" />
 
     <div
       class="flex flex-wrap justify-center gap-4 w-full max-w-8xl mb-32 sm:mb-32 "
