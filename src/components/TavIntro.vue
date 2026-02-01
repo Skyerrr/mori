@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-black flex flex-col max-w-8xl mx-auto px-6 sm:px-10 md:px-16 lg:px-20 relative scale-4k"
+    class=" bg-black flex flex-col max-w-8xl mx-auto px-6 sm:px-10 md:px-16 lg:px-20 relative scale-4k "
   >
     <!-- Header -->
     <h1
@@ -9,7 +9,9 @@
     >
       Hey i’m Tav
     </h1>
+   
     <conversation />
+    
   </div>
 </template>
 

@@ -1,6 +1,7 @@
 <template>
+<div class="flex flex-col min-h-screen lg:min-h-auto justify-evenly lg:justify-start">
   <div
-    class="w-full relative mt-16 sm:mt-32 md:mt-32 lg:mt-40 2xl:mt-40 mb-10 sm:mb-28 md:mb-40"
+    class="w-full relative mt-0 sm:mt-32 md:mt-32 lg:mt-40 2xl:mt-40 mb-10 sm:mb-28 md:mb-40 "
   >
     
       <div
@@ -9,7 +10,7 @@
       >
         <!-- Typed response -->
         <p
-          class="text-[clamp(22px,7vw,64px)] text-white font-light mb-2 recoleta-font typing"
+          class="text-[clamp(22px,4vw,64px)] text-white font-light mb-2 recoleta-font typing"
         >
           <span v-html="typedResponse"></span>
           <span v-if="isTyping" class="caret"></span>
@@ -28,24 +29,34 @@
 
   <!-- Buttons -->
   <div
-    class="flex flex-wrap justify-center gap-4 w-full max-w-8xl mt-60 sm:mt-36 md:mt-48"
+    class="flex flex-wrap justify-center gap-4 w-full max-w-8xl mt-0 sm:mt-0 md:mt-0 lg:mt-48"
   >
-    <div
-      v-for="button in currentNode?.buttons || []"
-      :key="button.id"
-      class="flex-shrink-0"
-    >
-      <button
-        @click="handleButtonClick(button)"
-        :disabled="isTyping"
-        class="rounded-full font-semibold text-base sm:text-lg md:text-xl lg:text-2xl
-               px-4 sm:px-5 md:px-6 py-3 sm:py-3.5 md:py-4
-               btn-ani cursor-pointer
-               disabled:opacity-40 disabled:pointer-events-none"
-      >
-        {{ button.label }}
-      </button>
-    </div>
+<div
+  v-for="button in currentNode?.buttons || []"
+  :key="button.id"
+  class="flex-shrink-0"
+>
+  <button
+    @click="handleButtonClick(button)"
+    :disabled="isTyping"
+    class="
+      rounded-full font-semibold
+      text-base sm:text-lg md:text-xl lg:text-2xl
+      px-4 sm:px-5 md:px-6
+      py-3 sm:py-3.5 md:py-4
+
+      /* 👇 ONLY when height ≤ 668px */
+      [@media(max-height:668px)]:text-sm
+      [@media(max-height:668px)]:px-3
+      [@media(max-height:668px)]:py-2
+
+      btn-ani cursor-pointer
+      disabled:opacity-40 disabled:pointer-events-none
+    "
+  >
+    {{ button.label }}
+  </button>
+</div>
   </div>
 
   <!-- Reset -->
@@ -56,6 +67,7 @@
   >
     Start Over
   </button>
+  </div>
 </template>
 
 <script setup>
