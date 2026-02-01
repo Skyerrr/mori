@@ -61,7 +61,7 @@
                     <span
                       :ref="(el) => registerTag(el, rIndex, tIndex)"
                       :class="
-                        item.hoverBorder +
+                        item.hoverPillBorder +
                         ' px-2 max-[361px]:px-1.5 py-1.5 border border-[#2e2e2e] rounded-full text-zinc-300 bg-[#171717] text-[clamp(12px,2.2vw,16px)]'
                       "
                     >

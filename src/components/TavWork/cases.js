@@ -24,7 +24,7 @@ const cases = [
 
     hoverText: `${hoverAnimation} text-[#C480E6] lg:text-white lg:group-hover:text-[#C480E6]`,
     hoverBorder: `${hoverAnimation} border-[#C480E6] lg:group-hover:border-[#C480E6]`,
-    hoverPillBorder: `${hoverAnimation} border-[#C480E6] lg:border-[#2C2C2C] lg:group-hover:border-[#C480E6]`,
+    hoverPillBorder: `${hoverAnimation} border-[#2C2C2C] lg:border-[#2C2C2C] lg:group-hover:border-[#C480E6]`,
     hoverButton: `${hoverAnimation} bg-[#C480E6] lg:group-hover:bg-[#C480E6] lg:bg-white w-full lg:w-auto`,
 
     dotColor: "text-[#8900CD]",
@@ -47,7 +47,7 @@ const cases = [
 
     hoverText: `${hoverAnimation} text-[#F77D32] lg:text-white lg:group-hover:text-[#F77D32]`,
     hoverBorder: `${hoverAnimation} border-[#F77D32] lg:group-hover:border-[#F77D32]`,
-    hoverPillBorder: `${hoverAnimation} border-[#F77D32] lg:border-[#2C2C2C] lg:group-hover:border-[#F77D32]`,
+    hoverPillBorder: `${hoverAnimation} border-[#2C2C2C] lg:border-[#2C2C2C] lg:group-hover:border-[#F77D32]`,
     hoverButton: `${hoverAnimation} bg-[#F77D32] lg:group-hover:bg-[#F77D32] lg:bg-white w-full lg:w-auto`,
 
     dotColor: "text-[#FF9500]",
