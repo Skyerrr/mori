@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-col items-center pt-6 gap-3 w-full text-white mb-3 satoshi font-medium px-4 sm:px-6 md:px-10 lg:px-20 xl:px-32"
+    class="flex flex-col items-center gap-3 w-full text-white mb-3 satoshi font-medium px-4 sm:px-6 md:px-10 lg:px-20 xl:px-32"
   >
     <span class="text-[clamp(18px,1.2vw,24px)] leading-[clamp(24px,1.5vw,32px)]">
       Journey

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-col items-center pt-6 gap-3 self-stretch text-white mb-32 satoshi font-medium"
+    class="flex flex-col items-center gap-3 self-stretch text-white mb-32 satoshi font-medium"
   >
     <span
       class="text-[clamp(18px,1.2vw,24px)] leading-[clamp(24px,1.5vw,32px)]"

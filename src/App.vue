@@ -4,16 +4,16 @@
 <TopBarMobile class="block md:hidden" />
 
 <div id="intro" class="flex flex-col w-full">
-  <div class="mb-32 flex flex-col w-full">
+  <div class="mb-38 flex flex-col w-full">
     <TavIntro class="flex-1 w-full " />
   </div>
-    <div id="work" class="mb-32 flex flex-col w-full ">
+    <div id="work" class="mb-38 md:mt-6 flex flex-col w-full ">
     <TavWork class="flex-1 w-full" />
   </div>
-  <div id="journey" class="mb-32 flex flex-col w-full ">
+  <div id="journey" class="mb-38 flex flex-col w-full ">
     <TavJourney class="flex-1 w-full items-center" />
   </div>
-  <div id="references" class="flex flex-col w-full md:mb-24">
+  <div id="references" class="flex flex-col w-full md:mb-38 md:mt-6">
     <TavReferences class="flex-1 w-full" />
   </div>
   <div id="connect" class=" flex flex-col w-full mb-12 md:mb-24">
