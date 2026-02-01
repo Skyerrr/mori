@@ -93,7 +93,7 @@
                 </div>
               </div>
               <a
-                href="https://www.linkedin.com/in/rodrigotavr/"
+                href=""
                 target="_blank"
                 rel="noopener noreferrer"
               >

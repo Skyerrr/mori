@@ -60,13 +60,13 @@
   </div>
 
   <!-- Reset -->
-  <button
+  <!-- <button
     v-if="canReset"
     @click="resetConversation"
     class="mt-4 px-6 border border-white text-white rounded-full hover:bg-white/10 self-start"
   >
     Start Over
-  </button>
+  </button> -->
   </div>
 </template>
 
