@@ -24,7 +24,6 @@
 </template>
 
 <script setup>
-import AppFooter from "./components/AppFooter.vue";
 import TopBar from "./components/TopBar.vue";
 import TopBarMobile from "./components/TopBarMobile.vue";
 import TavIntro from "./components/TavIntro.vue";

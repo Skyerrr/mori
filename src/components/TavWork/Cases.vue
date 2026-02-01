@@ -6,8 +6,10 @@
       <a
         v-for="item in cases"
         :key="item.slug"
+        target="_blank"
+        rel="noopener noreferrer"
         class="group relative flex justify-center w-full arrow-black-wrapper"
-        :href="`/${item.slug}`"
+        :href="`${item.slug}`"
       >
         <!-- Card wrapper -->
         <div class="relative w-full max-w-[clamp(320px,90vw,1280px)]">
@@ -63,33 +65,32 @@
 
                 <div class="h-px bg-[#2e2e2e] mt-6"></div>
 
-<div
-  v-if="item.stats"
-  class="mx-auto w-full max-w-[720px] flex justify-between gap-[clamp(16px,4vw,56px)]"
->
-  <div
-    v-for="stat in item.stats"
-    :key="stat.label"
-    class="flex flex-col items-center flex-1"
-  >
-    <!-- Number -->
-    <div
-      class="flex items-baseline gap-1 text-[clamp(22px,3vw,40px)] satoshi font-normal leading-none"
-    >
-      <span v-if="stat.prefix">{{ stat.prefix }}</span>
-      <CountUpNumber :value="stat.value" />
-      <span v-if="stat.suffix">{{ stat.suffix }}</span>
-    </div>
+                <div
+                  v-if="item.stats"
+                  class="mx-auto w-full max-w-[720px] flex justify-between gap-[clamp(16px,4vw,56px)]"
+                >
+                  <div
+                    v-for="stat in item.stats"
+                    :key="stat.label"
+                    class="flex flex-col items-center flex-1"
+                  >
+                    <!-- Number -->
+                    <div
+                      class="flex items-baseline gap-1 text-[clamp(22px,3vw,40px)] satoshi font-normal leading-none"
+                    >
+                      <span v-if="stat.prefix">{{ stat.prefix }}</span>
+                      <CountUpNumber :value="stat.value" />
+                      <span v-if="stat.suffix">{{ stat.suffix }}</span>
+                    </div>
 
-    <!-- Label -->
-<p
-  class="mt-1 text-[#A3A3A3] text-[clamp(12px,1vw,16px)]
-         text-center whitespace-nowrap"
->
-  {{ stat.label }}
-</p>
-  </div>
-</div>
+                    <!-- Label -->
+                    <p
+                      class="mt-1 text-[#A3A3A3] text-[clamp(12px,1vw,16px)] text-center whitespace-nowrap"
+                    >
+                      {{ stat.label }}
+                    </p>
+                  </div>
+                </div>
               </div>
               <a
                 href="https://www.linkedin.com/in/rodrigotavr/"

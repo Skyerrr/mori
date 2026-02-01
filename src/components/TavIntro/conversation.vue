@@ -36,7 +36,7 @@
       class="flex-shrink-0"
     >
       <button
-        @click="handleButtonClick(button.nextNodeId)"
+        @click="handleButtonClick(button)"
         :disabled="isTyping"
         class="rounded-full font-semibold text-base sm:text-lg md:text-xl lg:text-2xl
                px-4 sm:px-5 md:px-6 py-3 sm:py-3.5 md:py-4
@@ -126,8 +126,17 @@ watch(
   { immediate: true }
 )
 
-const handleButtonClick = (nextNodeId) => {
-  currentNodeId.value = nextNodeId
+const handleButtonClick = (button) => {
+  // Custom click (scrollButton)
+  if (button.onClick) {
+    button.onClick()
+    return
+  }
+
+  // Normal conversation navigation
+  if (button.nextNodeId) {
+    currentNodeId.value = button.nextNodeId
+  }
 }
 
 const resetConversation = () => {

@@ -7,7 +7,9 @@
         v-for="item in cases"
         :key="item.slug"
         class="group relative flex justify-center w-full arrow-black-wrapper"
-        :href="`/${item.slug}`"
+        :href="`${item.slug}`"
+        target="_blank"
+        rel="noopener noreferrer"
       >
         <!-- Card wrapper -->
         <div class="relative w-full max-w-[clamp(320px,90vw,1280px)]">
@@ -25,7 +27,6 @@
           <div
             class="relative bg-[#171717] rounded-[40px] z-10 overflow-hidden flex flex-col lg:flex-row"
           >
-            
             <div
               class="w-full lg:w-1/2 h-[284px] sm:h-[300px] lg:h-auto rounded-t-[40px] lg:rounded-tr-[40px] lg:rounded-br-[40px] overflow-hidden"
             >
@@ -159,8 +160,7 @@ const updateDots = () => {
 
     if (!tag || !nextTag || !dot) return;
 
-    dot.style.display =
-      tag.offsetTop === nextTag.offsetTop;
+    dot.style.display = tag.offsetTop === nextTag.offsetTop;
   });
 };
 

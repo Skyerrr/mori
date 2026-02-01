@@ -1,12 +1,13 @@
-const hoverAnimation = "transition-colors duration-400";
 import case1 from '@/assets/image/case1.png';
 import case1Mobile from '@/assets/image/case1-mobile.png';
-
 import case2 from '@/assets/image/case2.png';
 import case2Mobile from '@/assets/image/case2-mobile.png';
+
+const hoverAnimation = "transition-colors duration-400";
+
 const cases = [
   {
-    slug: "vivo",
+    slug: "https://pitch.com/v/unifying-vivos-product-service-acquisition-flow-ewyk9c/f0256a50-b2fc-462d-9daa-8e8146799527",
     title: "Vivo",
     subtitle: "Unifying Product Acquisition Flow",
     tags: [
@@ -29,7 +30,7 @@ const cases = [
     dotColor: "text-[#8900CD]",
   },
   {
-    slug: "https://google.com.br",
+    slug: "https://pitch.com/v/elegibility-payer-mapping-xj6n9a",
     title: "Luma Health",
     subtitle: "AI Eligibility Payer Matching",
     tags: [

@@ -9,7 +9,7 @@
     <div class="mx-auto flex justify-between px-2 md:px-20">
       <!-- Logo -->
       <div class="mt-3">
-        <h1
+        <span
           class="satoshi font-black italic"
           style="
             color: #fff;
@@ -23,7 +23,7 @@
           >
             TAV
           </a>
-        </h1>
+        </span>
       </div>
 
       <!-- Navigation Menu -->
