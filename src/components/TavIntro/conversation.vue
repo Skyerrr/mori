@@ -82,12 +82,15 @@ const isTyping = ref(false)
 
 const canReset = computed(() => currentNodeId.value !== "start")
 
-/**
- * Typing engine that supports HTML, links and images
- */
-const typeText = async (html, speed = 20) => {
+
+const typeText = async (html, speed = 18) => {
   isTyping.value = true
   typedResponse.value = ""
+
+
+  const isFirefox = navigator.userAgent.includes("Firefox")
+  const adjustedSpeed = isFirefox ? speed * 0.65 : speed
+
 
   let i = 0
   let isTag = false
@@ -109,27 +112,25 @@ const typeText = async (html, speed = 20) => {
       tagBuffer += char
 
       if (char === ">") {
-        // inject full tag at once
         typedResponse.value += tagBuffer
         tagBuffer = ""
         isTag = false
-        await new Promise((r) => setTimeout(r, speed))
+        await new Promise((r) => setTimeout(r, adjustedSpeed))
       }
 
       i++
       continue
     }
 
-    // normal text → type char by char
     typedResponse.value += char
     i++
-    await new Promise((r) => setTimeout(r, speed))
+    await new Promise((r) => setTimeout(r, adjustedSpeed))
   }
 
   isTyping.value = false
 }
 
-// Re-run typing when response changes
+
 watch(
   () => currentNode.value?.response,
   (newText) => {
@@ -139,13 +140,11 @@ watch(
 )
 
 const handleButtonClick = (button) => {
-  // Custom click (scrollButton)
   if (button.onClick) {
     button.onClick()
     return
   }
 
-  // Normal conversation navigation
   if (button.nextNodeId) {
     currentNodeId.value = button.nextNodeId
   }
@@ -157,7 +156,6 @@ const resetConversation = () => {
 </script>
 
 <style scoped>
-/* Transition */
 .fade-scale-enter-active,
 .fade-scale-leave-active {
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -173,7 +171,6 @@ const resetConversation = () => {
   transform: scale(1.05);
 }
 
-/* Typing */
 .typing {
   white-space: pre-wrap;
 }
