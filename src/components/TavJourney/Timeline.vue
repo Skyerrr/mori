@@ -44,7 +44,7 @@ const timeline = [
     year: 2025,
     title: "Led UX for Enterprise Platform – Luma Health",
     description:
-      "Redesigned internal SaaS tools supporting 50K+ users, improving workflow efficiency and task completion rates by 45%. Led AI-driven initiatives to simplify testing and accelerate product implementation.",
+      "Designed internal tools and AI automation that reduced customer go-live time by 20%-30%, turning weeks-long setup steps into hours. Built payer mapping, form testing, self-serve integration flows, dashboards, and led a full overhaul of complex settings.",
   },
   {
     year: 2024,

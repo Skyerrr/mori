@@ -93,15 +93,12 @@
                 </div>
               </div>
               <a
-                href=""
-                target="_blank"
-                rel="noopener noreferrer"
+                
               >
                 <button
-                  @click=""
-                  :class="
+                    :class="
                     item.hoverButton +
-                    ' bg-white inline-flex w-fit px-[24px] py-[12px] rounded-full text-[16px] satoshi font-medium flex items-center justify-center text-center btn-case'
+                    ' bg-white inline-flex w-fit px-[24px] cursor-pointer py-[12px] rounded-full text-[16px] satoshi font-medium flex items-center justify-center text-center btn-case'
                   "
                 >
                   View Case Study

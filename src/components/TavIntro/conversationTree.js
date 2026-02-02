@@ -71,8 +71,8 @@ export const conversationTree = {
     buttons: [
       { label: 'Why?', nextNodeId: 'ph2'},
       { label: 'I agree', nextNodeId: 'ph_topic1'},
-      { label: 'Is thid AI?', nextNodeId: 'case_garden2'},
-      { label: 'Show me your work', nextNodeId: 'work '} 
+      { label: 'Is this AI?', nextNodeId: 'meta2'},
+      scrollButton('Show me your work', 'work', -55), 
     ]
   }),
   ph2: makeNode('ph2', {
@@ -81,7 +81,7 @@ export const conversationTree = {
     buttons: [
       { label: 'Keep yapping', nextNodeId: 'ph3'},
       { label: 'I wanna talk about other thing', nextNodeId: 'ph_topic2'},
-      { label: 'Show me your work', nextNodeId: 'work'} 
+      scrollButton('Show me your work', 'work', -55), 
     ]
   }),
   ph3: makeNode('ph3', {
@@ -112,6 +112,15 @@ export const conversationTree = {
       { label: 'Design', nextNodeId: 'd1'},
       { label: 'Jokes', nextNodeId: 'jk1'},
       { label: 'What is this feature?', nextNodeId: 'garden2'} 
+    ]
+  }),
+   meta2: makeNode('meta2', {
+    response: `Not quite.<br>It’s a conversational feature<br>you click, I reply, and we see where it goes.`,
+    subtitle: '',
+    buttons: [
+      { label: 'Tell me something meaningful', nextNodeId: 'ph1'},
+      { label: 'Tell me more about this tool', nextNodeId: 'garden1'},
+      { label: 'What else can we talk about?', nextNodeId: 'meta_topic'} 
     ]
   }),
  meta1: makeNode('meta1', {
@@ -151,7 +160,7 @@ export const conversationTree = {
     buttons: [
       { label: 'Tell me more', nextNodeId: 'p3'},
       { label: 'So be direct with me', nextNodeId: 'p2_2'},
-      { label: 'Show me your work', nextNodeId: 'work'}
+      scrollButton('Show me your work', 'work', -55),
     ]
   }),
  p3: makeNode('p3', {
@@ -183,7 +192,7 @@ export const conversationTree = {
     ]
   }),
  p6: makeNode('p6', {
-    response: `Ok that’s all i got. <br>If you want more yap, let’s chat:<br>${textLinkImg('rodrigotavr@gmail.com', "https://google.com.br")}`,
+    response: `Ok that’s all i got. <br>If you want more yap, let’s chat:<br>${textLinkImg('rodrigotavr@gmail.com', "mailto:rodrigotavr@gmail.com")}`,
     subtitle: '',
     buttons: [
       { label: 'Tell me more about Product and Service', nextNodeId: 'pd1'},
@@ -191,7 +200,7 @@ export const conversationTree = {
     ]
   }),
 p2_2: makeNode('p2_2', {
-    response: `What's your challenge?<br>And what’s slowing you down?<br>Tell me all about it: ${textLinkImg('rodrigotavr@gmail.com', "https://google.com.br")}`,
+    response: `What's your challenge?<br>And what’s slowing you down?<br>Tell me all about it: ${textLinkImg('rodrigotavr@gmail.com', "mailto:rodrigotavr@gmail.com")}`,
     subtitle: '',
     buttons: [
       { label: 'Tell me more about you', nextNodeId: 'p3'},
@@ -330,13 +339,13 @@ garden2: makeNode('garden2', {
       { label: 'I want to explore!', nextNodeId: 'garden_topic'}
   ]}),
 case_garden1: makeNode('case_garden1', {
-    response: `You can click on ${textLink('this link', "")} and I will show you`,
+    response: `I'm actually making a video case for it, and it should be available soon.`,
     subtitle: '',
     buttons: [
       { label: 'I want to talk about other thing', nextNodeId: 'ph_topic2'}
   ]}),
 case_garden2: makeNode('case_garden2', {
-    response: `Actually, this is just a conversational flow<br>You can click on ${textLink('this link', "")} and I will show you`,
+    response: `Actually, this is just a conversational flow<br>Soon i will release a video showing how i made it`,
     subtitle: '',
     buttons: [
       { label: 'I want to talk about other thing', nextNodeId: 'ph_topic2'}
@@ -353,19 +362,19 @@ ai2: makeNode('ai2', {
     response: `I use AI to think better, learn faster,<br>and automate the boring parts.<br>So I can focus on judgment, craft, and impact.`,
     subtitle: '',
     buttons: [
-      { label: 'Go deeper.', nextNodeId: 'ai3'},
+      { label: 'Be more specific.', nextNodeId: 'ai3'},
       { label: 'Do you have a case where you use AI?', nextNodeId: 'case_ai'},
       { label: 'I wanna talk about other thing', nextNodeId: 'ai_topic'}
   ]}),
 ai3: makeNode('ai3', {
-    response: `I use AI to think better, learn faster,<br> and automate the boring parts.<br>So I can focus on judgment, craft, and impact.`,
+    response: `I use it to stress-test decisions, simulate scenarios, explore design alternatives, summarize research, generate images, transcribe calls and more.`,
     subtitle: '',
     buttons: [
       { label: 'Do you have a case where you use AI?', nextNodeId: 'case_ai'},
       { label: 'I wanna talk about other thing', nextNodeId: 'ai_topic'}
   ]}),
 case_ai: makeNode('case_ai', {
-    response: `I actually do, here you go:<br>${textLinkImg('AI Elegibillity Payer Mapping', "https://docs.google.com/presentation/d/1BrBduYvyLGTbzfZS1OyKVEwIW3sO2RDvKHdQFU18is4/edit?usp=sharing")}`,
+    response: `I actually do, here you go:<br>${textLinkImg('AI Elegibillity Payer Mapping', "https://pitch.com/v/elegibility-payer-mapping-xj6n9a/f8bc33aa-ef35-4d8b-85ee-1c31b5ac9485")}`,
     subtitle: '',
     buttons: [
       { label: 'I wanna talk about other thing', nextNodeId: 'ai_topic'}
@@ -416,7 +425,7 @@ acc6: makeNode('acc6', {
       { label: 'I wanna talk about other thing', nextNodeId: 'acc_topic'}
   ]}),
 egg1: makeNode('egg1', {
-    response: `There’s a version of this portfolio where I behave.<br>${textLinkImg('Download resume', "mailto:rodrigotavr@gmail.com")}`,
+    response: `There’s a version of this portfolio where I behave.<br>${textLinkImg('Download resume', "/RODRIGOTAVARESCV.pdf")}`,
     subtitle: '',
     buttons: [
       { label: 'I wanna talk about other thing', nextNodeId: 'acc_topic'}

@@ -11,8 +11,8 @@ const cases = [
     title: "Vivo",
     subtitle: "Unifying Product Acquisition Flow",
     tags: [
-      ["Health / EdTech", "B2C SaaS", "Startup"],
-      ["iOS", "Product Design", "AI Content"],
+      ["Telecom", "B2C SaaS", "Enterprise"],
+      ["iOS", "Product Design", "End-to-End"],
     ],
     stats: [
       { prefix: "x", value: 7, label: "Flows unified" },
@@ -34,13 +34,13 @@ const cases = [
     title: "Luma Health",
     subtitle: "AI Eligibility Payer Matching",
     tags: [
-      ["Health Tech", "Enterprise SaaS", "Staratup"],
+      ["Health Tech", "Enterprise SaaS", "Startup"],
       ["Desktop", "Product Design", "AI automation"],
     ],
     stats: [
       { prefix: "x", value: 5, label: "Faster" },
       { value: 95, suffix: "%", label: "Accuracy" },
-      { value: 0, label: "Training" },
+      { value: 0, label: "Training needed" },
     ],
     image: case2,
     mobileImage: case2Mobile,

@@ -106,14 +106,11 @@
               </div>
 
               <a
-                href=""
-                target="_blank"
-                rel="noopener noreferrer"
               >
                 <button
                   :class="
                     item.hoverButton +
-                    ' inline-flex w-fit px-[24px] py-[12px] rounded-full text-[16px] satoshi font-medium items-center justify-center btn-case'
+                    ' inline-flex w-fit px-[24px] py-[12px] cursor-pointer rounded-full text-[16px] satoshi font-medium items-center justify-center btn-case'
                   "
                 >
                   View Case Study
