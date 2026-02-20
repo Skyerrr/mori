@@ -2,7 +2,7 @@
   <div class="bg-color">
     <TopBar class="hidden md:block" />
     <TopBarMobile class="block md:hidden" />
-
+<EditorialMargins />
     <div id="intro" class="flex flex-col w-full mt-6">
       <div class="mb-0 lg:mb-38 flex flex-col w-full">
         <TavIntro
@@ -33,4 +33,5 @@ import TavWork from "./components/TavWork.vue";
 import TavJourney from "./components/TavJourney.vue";
 import TavReferences from "./components/TavReferences.vue";
 import TavConnect from "./components/TavConnect.vue";
+import EditorialMargins from "./components/TavIntro/EditorialMargins.vue"
 </script>

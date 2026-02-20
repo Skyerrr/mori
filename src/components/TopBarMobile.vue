@@ -10,7 +10,7 @@
       ]"
     >
       <div class="mx-auto flex justify-between px-6 md:px-20">
-        <span class="satoshi font-black italic text-white text-[24px]">TAV</span>
+        <span class="satoshi font-black italic text-white text-[24px]">TAV<span class="text-[#EDC756]">.</span></span>
 
         <button class="md:hidden" @click.stop="open = !open">
           <img v-if="!open" src="@/assets/image/menu-icon.svg" />

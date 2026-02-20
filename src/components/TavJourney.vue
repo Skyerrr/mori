@@ -16,7 +16,7 @@
           >
             Download full resume
             <img
-              src="@/assets/image/Arrow.png"
+              src="/RODRIGOTAVARESCV.pdf"
               class="ml-3 arrow"
               alt="arrow"
             />

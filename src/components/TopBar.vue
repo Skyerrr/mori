@@ -21,7 +21,7 @@
           <a
             class="text-white hover:text-[#71717A] transition-colors duration-300"
           >
-            TAV
+            TAV<span class="text-[#EDC756]">.</span>
           </a>
         </span>
       </div>
