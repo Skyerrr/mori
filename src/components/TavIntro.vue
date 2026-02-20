@@ -12,11 +12,11 @@
         class="max-w-[1440px] mx-auto h-full flex flex-col justify-center relative"
       >
 <!-- RIGHT METADATA -->
-<div class="hidden md:flex absolute right-10 top-0 items-center">
+<div class="hidden md:inline-flex absolute right-10 top-0 items-start">
 
-  <div class="meta-line "></div>
+  <div class="meta-line"></div>
 
-  <div class="vertical-meta ">
+  <div class="vertical-meta">
     INTERACTIVE DIALOGUE SYSTEM — TAV'S MIND GARDEN — EST. 2025
   </div>
 
@@ -206,17 +206,16 @@ function handleButtonClick(button) {
 <style scoped>
 .meta-line {
   width: 1px;
-  height: 54vh;   /* linha longa elegante */
   background: #4A5565;
   margin-right: 8px;
-  
+
+  align-self: stretch;   /* THIS is the key */
 }
 
 .vertical-meta {
   writing-mode: vertical-rl;
   text-orientation: mixed;
-  direction: rtl;   /* resolve a inversão */
-  
+  direction: rtl;
 
   font-family: 'Inter', sans-serif;
   font-size: 0.65rem;
