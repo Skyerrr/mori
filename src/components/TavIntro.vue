@@ -1,6 +1,6 @@
 <template>
   <section
-    class="min-h-screen bg-black text-white flex flex-col relative"
+    class=" bg-black text-white flex flex-col relative"
   >
     <!-- Editorial Margins -->
     <div class="relative">
