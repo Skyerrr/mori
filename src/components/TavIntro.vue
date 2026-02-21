@@ -1,26 +1,15 @@
 <template>
-  <section
-    class=" bg-black text-white flex flex-col relative"
-  >
-    <!-- Editorial Margins -->
-    <div class="relative">
-      <EditorialMargins />
-    </div>
-
+  <section class="min-h-screen md:min-h-auto bg-black text-white flex flex-col relative">
     <div class="flex-1 px-8 md:px-16 py-12 relative">
-      <div
-        class="max-w-[1440px] mx-auto h-full flex flex-col justify-center relative"
-      >
-<!-- RIGHT METADATA -->
-<div class="hidden md:inline-flex absolute right-10 top-0 items-start">
+      <div class="max-w-[1440px] mx-auto h-full flex flex-col justify-center relative">
 
-  <div class="meta-line"></div>
-
-  <div class="vertical-meta">
-    INTERACTIVE DIALOGUE SYSTEM — TAV'S MIND GARDEN — EST. 2025
-  </div>
-
-</div>
+        <!-- RIGHT METADATA -->
+        <div class="hidden md:inline-flex absolute right-10 top-0 items-start">
+          <div class="meta-line"></div>
+          <div class="vertical-meta">
+            INTERACTIVE DIALOGUE SYSTEM — TAV'S MIND GARDEN — EST. 2025
+          </div>
+        </div>
 
         <!-- Issue -->
         <Motion
@@ -36,13 +25,13 @@
         <Motion
           :initial="{ opacity: 0, y: 30 }"
           :animate="{ opacity: 1, y: 0 }"
-          :transition="{ duration: 1, delay: 0.1 }"
+          :transition="{ duration: 1, delay: 0.8 }"
           class="mb-12"
         >
           <h1
             class="leading-none"
             style="
-              font-family: &quot;Playfair Display&quot;;
+              font-family: Recoleta;
               font-size: clamp(4.5rem, 14vw, 13rem);
               line-height: 0.85;
             "
@@ -54,19 +43,48 @@
 
         <!-- Conversation -->
         <div class="max-w-4xl">
-          <div class="mb-8 border-l-[3px] border-gray-800 pl-6">
-            <div
-              v-if="currentNode.subtitle"
-              class="text-gray-600 mb-3 text-xs tracking-wider uppercase"
-            >
-              {{ currentNode.subtitle }}
-            </div>
 
+          <div class="mb-8 flex items-start gap-6">
+
+            <!-- Dynamic Vertical Line -->
             <div
-              class="text-gray-200 leading-relaxed"
-              style="font-size: clamp(1.25rem, 2.8vw, 1.75rem)"
-              v-html="isComplete ? currentNode.response : displayedText"
-            />
+              class="w-[3px] bg-gray-800 transition-all duration-200"
+              :style="{ height: lineHeight + 'px' }"
+            ></div>
+
+            <div class="flex-1 relative">
+
+              <!-- Subtitle -->
+              <div
+                v-if="currentNode.subtitle"
+                class="text-gray-600 mb-3 text-xs tracking-wider uppercase"
+              >
+                {{ currentNode.subtitle }}
+              </div>
+
+              <!-- Hidden Measurer -->
+              <div
+                ref="measureEl"
+                class="absolute invisible pointer-events-none whitespace-pre-wrap"
+                style="
+                  font-size: clamp(1.25rem, 2.8vw, 1.75rem);
+                  line-height: 1.625;
+                  width: 100%;
+                "
+                v-html="isComplete ? currentNode.response : displayedText"
+              ></div>
+
+              <!-- Fixed 3-Line Container -->
+              <div
+                class="text-gray-200 leading-relaxed overflow-hidden whitespace-pre-wrap"
+                style="
+                  font-size: clamp(1.25rem, 2.8vw, 1.75rem);
+                  height: calc(1.625em * 3);
+                "
+                v-html="isComplete ? currentNode.response : displayedText"
+              ></div>
+
+            </div>
           </div>
 
           <!-- Buttons -->
@@ -90,6 +108,7 @@
               {{ button.label }}
             </Motion>
           </Motion>
+
         </div>
       </div>
     </div>
@@ -97,14 +116,11 @@
 </template>
 
 <script setup>
-import { ref, computed, watch, onBeforeUnmount } from "vue";
+import { ref, computed, watch, onBeforeUnmount, nextTick } from "vue";
 import { Motion } from "motion-v";
 import { conversationTree } from "./TavIntro/conversationTree.js";
-import EditorialMargins from "./TavIntro/EditorialMargins.vue";
 
-/* ---------------------------
-   STATE
-----------------------------*/
+/* ---------------- STATE ---------------- */
 
 const conversationStage = ref("start");
 const isTransitioning = ref(false);
@@ -119,14 +135,29 @@ const currentNode = computed(() => {
   return conversationTree[conversationStage.value] || fallbackNode;
 });
 
-/* ---------------------------
-   TYPING EFFECT
-----------------------------*/
+/* ---------------- TYPING ---------------- */
 
 const displayedText = ref("");
 const isComplete = ref(false);
-
 let typingInterval = null;
+
+/* ---------------- LINE HEIGHT ---------------- */
+
+const measureEl = ref(null);
+const lineHeight = ref(0);
+
+function updateLineHeight() {
+  if (!measureEl.value) return;
+
+  const naturalHeight = measureEl.value.offsetHeight;
+  const computed = getComputedStyle(measureEl.value);
+  const singleLine = parseFloat(computed.lineHeight);
+  const maxHeight = singleLine * 3;
+
+  lineHeight.value = Math.min(naturalHeight, maxHeight);
+}
+
+/* ---------------- TYPING FUNCTION ---------------- */
 
 function startTyping(text, speed = 15) {
   if (typingInterval) clearInterval(typingInterval);
@@ -144,9 +175,11 @@ function startTyping(text, speed = 15) {
     if (index < plainText.length) {
       displayedText.value = plainText.slice(0, index + 1);
       index++;
+      nextTick(updateLineHeight);
     } else {
       isComplete.value = true;
       clearInterval(typingInterval);
+      nextTick(updateLineHeight);
     }
   }, speed);
 }
@@ -157,32 +190,14 @@ watch(
     if (!newText) return;
     startTyping(newText);
   },
-  { immediate: true },
+  { immediate: true }
 );
 
 onBeforeUnmount(() => {
   if (typingInterval) clearInterval(typingInterval);
 });
 
-/* ---------------------------
-   SCROLL HELPER
-----------------------------*/
-
-function scrollToTarget(targetId, offset = 0) {
-  const el = document.getElementById(targetId);
-  if (!el) return;
-
-  const y = el.getBoundingClientRect().top + window.pageYOffset + offset;
-
-  window.scrollTo({
-    top: y,
-    behavior: "smooth",
-  });
-}
-
-/* ---------------------------
-   BUTTON HANDLER
-----------------------------*/
+/* ---------------- BUTTON HANDLER ---------------- */
 
 function handleButtonClick(button) {
   if (button.onClick) {
@@ -206,24 +221,20 @@ function handleButtonClick(button) {
 <style scoped>
 .meta-line {
   width: 1px;
-  background: #4A5565;
+  background: #4a5565;
   margin-right: 8px;
-
-  align-self: stretch;   /* THIS is the key */
+  align-self: stretch;
 }
 
 .vertical-meta {
   writing-mode: vertical-rl;
   text-orientation: mixed;
   direction: rtl;
-
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 0.65rem;
   letter-spacing: 0.22em;
   color: #ffffff;
-
   white-space: nowrap;
-
   opacity: 0;
   animation: fadeInMeta 1s ease forwards;
   animation-delay: 0.8s;
