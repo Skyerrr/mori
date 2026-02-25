@@ -5,12 +5,12 @@
     <TopText />
     <div class="flex justify-center">
       <Cases
-        class="hidden sm:block mb-8 sm:mb-12 -mt-12 sm:mt-0 w-full max-w-[1280px]"
+        class="hidden md:block mb-8 sm:mb-12 -mt-12 sm:mt-0 w-full max-w-[1440px]"
       />
     </div>
     <div class="flex justify-center">
       <CasesMobile
-        class="block sm:hidden mb-0 sm:mb-12 -mt-12 sm:mt-0 w-full max-w-[1280px]"
+        class="block md:hidden mb-0 sm:mb-12 -mt-12 sm:mt-0 w-full max-w-[1440px]"
       />
     </div>
   </div>

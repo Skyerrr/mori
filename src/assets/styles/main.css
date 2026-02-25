@@ -84,6 +84,22 @@
   border-color: white;
 }
 
+.btn-ani-black {
+  background: black;
+  color: #9ca3af;
+  border: 2px solid #464646;
+  transition:
+    background-color 300ms ease,
+    color 300ms ease,
+    border-color 400ms ease;
+}
+
+.btn-ani-black:hover {
+  background: black;
+  color: white;
+  border-color: #9ca3af ;
+}
+
 .arrow {
   display: inline-block;
   transform: rotate(0deg) translate(0, -0px);  /* move up */

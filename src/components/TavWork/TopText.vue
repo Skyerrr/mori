@@ -1,24 +1,73 @@
+<script setup>
+import { Motion } from "motion-v"
+</script>
+
 <template>
-  <div
-    class="flex flex-col items-center gap-3 self-stretch text-white mb-32 satoshi font-medium"
+  <section
+    id="work"
+    class="bg-black text-white px-8 relative mb-16 sm:mb-0"
   >
-    <span
-      class="text-[clamp(18px,1.2vw,24px)] leading-[clamp(24px,1.5vw,32px)]"
-    >
-      Work
-    </span>
-    <div
-            class="text-center text-white font-recoleta font-normal 
-             text-[clamp(32px,2.5vw,48px)] leading-[clamp(36px,2.8vw,48px)] 
-             tracking-[clamp(1.2px,0.09vw,1.8px)] mb-6"
-    >
-      <span>Some memorable cases that i love</span>
+    <div class="max-w-[1440px] mx-auto">
+
+      <!-- Section Header -->
+      <Motion
+        as="div"
+        :initial="{ opacity: 0, y: 40 }"
+        :animate="{ opacity: 1, y: 0 }"
+        :transition="{ duration: 0.8, ease: 'easeOut' }"
+        class="grid md:grid-cols-12 gap-12 mb-16 md:mb-20"
+      >
+        <!-- Left Label -->
+        <div class="md:col-span-1">
+          <div
+            class="tracking-widest"
+            style="
+              font-family: Inter, sans-serif;
+              font-size: 0.7rem;
+              letter-spacing: 0.15em;
+              color: #aaaaaa;
+            "
+          >
+            WORK
+          </div>
+        </div>
+
+        <!-- Main Heading -->
+        <div class="md:col-span-7">
+          <h2
+            class="mb-6 whitespace-normal md:whitespace-nowrap"
+            style="
+              font-family: Recoleta, serif;
+              font-size: clamp(2rem, 5vw, 4.5rem);
+              font-weight: 500;
+              line-height: 1.1;
+              letter-spacing: -0.02em;
+            "
+          >
+            Some memorable cases that I love
+          </h2>
+
+          <p
+            class="border-l-2 border-gray-900 pl-6"
+            style="
+              font-family: Inter, sans-serif;
+              font-size: 20px;
+              line-height: 1.7;
+              letter-spacing: 0.01em;
+              max-width: 800px;
+              color: #aaaaaa;
+            "
+          >
+            Grounded in research, guided by storytelling, built to feel natural.
+          </p>
+        </div>
+
+        <!-- Empty Right Column -->
+        <div class="hidden md:flex md:col-span-4 flex-col items-end justify-between">
+        </div>
+      </Motion>
+
+
     </div>
-    <div
-      class="text-[#71717A] text-center satoshi font-bold 
-             text-[clamp(20px,1.7vw,32px)] leading-[clamp(24px,2vw,38px)]"
-    >
-      Grounded in research, guided by storytelling, built to feel natural.
-    </div>
-  </div>
+  </section>
 </template>

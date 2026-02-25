@@ -1,34 +1,47 @@
 <template>
-  <span class="" ref="statRef">
-    {{ displayValue }}
+  <span ref="statRef">
+    {{ formattedValue }}
   </span>
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, computed } from "vue";
 
-// Only one prop: value
-const { value } = defineProps({
+const props = defineProps({
   value: {
-    type: [Number, String],
+    type: Number,
     required: true,
+  },
+  duration: {
+    type: Number,
+    default: 1500,
+  },
+  decimals: {
+    type: Number,
+    default: 0,
   },
 });
 
-const displayValue = ref(typeof value === "number" ? 0 : value);
+const displayValue = ref(0);
 const statRef = ref(null);
 let hasAnimated = false;
 
-// Animate numbers only
-function animateNumber(target, duration = 1500) {
+/* Ease-out cubic (feels premium) */
+function easeOutCubic(t) {
+  return 1 - Math.pow(1 - t, 3);
+}
+
+function animateNumber(target) {
   if (hasAnimated) return;
   hasAnimated = true;
 
   const startTime = performance.now();
 
   function step(timestamp) {
-    const progress = Math.min((timestamp - startTime) / duration, 1);
-    displayValue.value = Math.floor(progress * target);
+    const progress = Math.min((timestamp - startTime) / props.duration, 1);
+    const eased = easeOutCubic(progress);
+
+    displayValue.value = target * eased;
 
     if (progress < 1) requestAnimationFrame(step);
   }
@@ -36,13 +49,14 @@ function animateNumber(target, duration = 1500) {
   requestAnimationFrame(step);
 }
 
-// Animate when scrolled into view
-onMounted(() => {
-  if (typeof value !== "number") return;
+const formattedValue = computed(() => {
+  return displayValue.value.toFixed(props.decimals);
+});
 
+onMounted(() => {
   const observer = new IntersectionObserver((entries) => {
     if (entries[0].isIntersecting) {
-      animateNumber(value);
+      animateNumber(props.value);
       observer.disconnect();
     }
   });
@@ -50,6 +64,3 @@ onMounted(() => {
   if (statRef.value) observer.observe(statRef.value);
 });
 </script>
-
-<style scoped>
-</style>

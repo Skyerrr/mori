@@ -16,7 +16,7 @@
           :initial="{ opacity: 0 }"
           :animate="{ opacity: 1 }"
           :transition="{ duration: 1, delay: 0.3 }"
-          class="text-gray-600 mb-10 tracking-widest text-xs"
+          class="text-[#aaaaaa] mb-10 tracking-widest text-xs "
         >
           PORTFOLIO 2025 — ISSUE Nº 01
         </Motion>
@@ -37,7 +37,7 @@
             "
           >
             Hey I'm <br />
-            <span class="italic">Tav</span>
+            <span>Tav</span>
           </h1>
         </Motion>
 
@@ -48,7 +48,7 @@
 
             <!-- Dynamic Vertical Line -->
             <div
-              class="w-[3px] bg-gray-800 transition-all duration-200"
+              class="w-[3px] bg-[#1F2937] transition-all duration-200"
               :style="{ height: lineHeight + 'px' }"
             ></div>
 
@@ -76,7 +76,7 @@
 
               <!-- Fixed 3-Line Container -->
               <div
-                class="text-gray-200 leading-relaxed overflow-hidden whitespace-pre-wrap"
+                class="text-gray-200 leading-relaxed overflow-hidden whitespace-pre-wrap satoshi"
                 style="
                   font-size: clamp(1.25rem, 2.8vw, 1.75rem);
                   height: calc(1.625em * 3);
@@ -103,7 +103,7 @@
               :while-hover="{ scale: 1.02 }"
               :while-tap="{ scale: 0.98 }"
               :disabled="isTransitioning"
-              class="px-5 py-3 border border-gray-800 hover:border-gray-600 transition-all duration-300 bg-transparent disabled:opacity-50"
+              class="px-6 py-4 border-2 rounded-full border-[#464646] hover:border-[#9ca3af] transition-all duration-300 bg-transparent disabled:opacity-50 cursor-pointer disabled:pointer-events-none text-sm sm:text-base"
             >
               {{ button.label }}
             </Motion>
@@ -221,7 +221,7 @@ function handleButtonClick(button) {
 <style scoped>
 .meta-line {
   width: 1px;
-  background: #4a5565;
+  background: #aaaaaa;
   margin-right: 8px;
   align-self: stretch;
 }
@@ -233,7 +233,7 @@ function handleButtonClick(button) {
   font-family: "Inter", sans-serif;
   font-size: 0.65rem;
   letter-spacing: 0.22em;
-  color: #ffffff;
+  color: #aaaaaa;
   white-space: nowrap;
   opacity: 0;
   animation: fadeInMeta 1s ease forwards;

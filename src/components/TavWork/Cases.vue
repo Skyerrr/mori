@@ -1,143 +1,132 @@
 <template>
-  <section id="work" class="bg-black text-white flex justify-center">
-    <div
-      class="flex flex-col gap-14 items-center w-full max-w-[clamp(320px,90vw,1280px)]"
+  <div class="space-y-16">
+    <a
+      v-for="(item, index) in cases"
+      :key="index"
+      :href="item.slug"
+      target="_blank"
+      class="group block relative transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-[1.015]"
     >
-      <a
-        v-for="item in cases"
-        :key="item.slug"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="group relative flex justify-center w-full arrow-black-wrapper"
-        :href="`${item.slug}`"
+      <!-- DESKTOP -->
+      <div
+        class="hidden lg:grid lg:grid-cols-2 bg-black rounded-[48px] overflow-hidden relative"
       >
-        <!-- Card wrapper -->
-        <div class="relative w-full max-w-[clamp(320px,90vw,1280px)]">
-          <!-- Border layer -->
-          <div class="pointer-events-none absolute inset-0 rounded-[40px] z-20">
-            <div
-              :class="
-                item.hoverBorder +
-                ' h-full  border-2 border-transparent rounded-[40px] rounded-bl-[40px] transition-all duration-300'
-              "
-            ></div>
+        <!-- LEFT CONTENT -->
+        <div class="py-[80px] pl-[80px] pr-[80px] space-y-8">
+          <div>
+            <p class="text-[#AAAAAA] text-[16px] mb-5">
+              {{ item.title }}
+            </p>
+
+            <span :class="['text-[48px]', item.hoverText]">
+              {{ item.subtitle }}
+            </span>
+            <span v-if="item.subtitle2" :class="['text-[48px]', item.hoverText]">
+            <br />
+              {{ item.subtitle2 }}
+            </span>
           </div>
 
-          <!-- Card -->
-          <div
-            class="relative bg-[#171717] rounded-[40px] z-10 overflow-hidden"
-          >
-            <!-- Left content -->
-            <div
-              class="flex flex-col px-[clamp(24px,5vw,80px)] py-[clamp(24px,6vw,80px)] lg:w-1/2"
-            >
-              <div class="mb-8">
-                <p class="mb-2 text-[clamp(16px,1.5vw,24px)]">
-                  <span :class="item.hoverText">{{ item.title }}</span>
-                </p>
-                <h2 class="text-[clamp(28px,3vw,48px)]">
-                  {{ item.subtitle }}
-                </h2>
-              </div>
-
-              <div class="flex flex-col gap-4 mb-10">
-                <div
-                  v-for="(row, rIndex) in item.tags"
-                  :key="rIndex"
-                  class="flex flex-wrap gap-3"
-                >
-                  <template v-for="(tag, tIndex) in row" :key="tag">
-                    <span
-                      :class="
-                        item.hoverPillBorder +
-                        ' px-4 py-1.5 border border-[#2e2e2e] rounded-full text-zinc-300 bg-[#171717] text-[clamp(12px,1vw,16px)]'
-                      "
-                    >
-                      {{ tag }}
-                    </span>
-                    <span
-                      v-if="tIndex < row.length - 1"
-                      :class="item.dotColor + ' mt-2'"
-                      >·</span
-                    >
-                  </template>
-                </div>
-
-                <div class="h-px bg-[#2e2e2e] mt-6"></div>
-
-                <div
-                  v-if="item.stats"
-                  class="mx-auto w-full max-w-[720px] flex justify-between gap-[clamp(16px,4vw,56px)]"
-                >
-                  <div
-                    v-for="stat in item.stats"
-                    :key="stat.label"
-                    class="flex flex-col items-center flex-1"
-                  >
-                    <!-- Number -->
-                    <div
-                      class="flex items-baseline gap-1 text-[clamp(22px,3vw,40px)] satoshi font-normal leading-none"
-                    >
-                      <span v-if="stat.prefix">{{ stat.prefix }}</span>
-                      <CountUpNumber :value="stat.value" />
-                      <span v-if="stat.suffix">{{ stat.suffix }}</span>
-                    </div>
-
-                    <!-- Label -->
-                    <p
-                      class="mt-1 text-[#A3A3A3] text-[clamp(12px,1vw,16px)] text-center whitespace-nowrap"
-                    >
-                      {{ stat.label }}
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <a
-                
-              >
-                <button
-                    :class="
-                    item.hoverButton +
-                    ' bg-white inline-flex w-fit px-[24px] cursor-pointer py-[12px] rounded-full text-[16px] satoshi font-medium flex items-center justify-center text-center btn-case'
-                  "
-                >
-                  View Case Study
-                  <img
-                    src="@/assets/image/Arrow.png"
-                    class="ml-3 arrow-black"
-                    alt="arrow-black"
-                  />
-                </button>
-              </a>
+          <!-- TAGS -->
+          <div class="space-y-2 text-[#AAAAAA] text-[14px]">
+            <div v-for="(row, r) in item.tags" :key="r">
+              {{ row.join(" / ") }}
             </div>
+          </div>
 
-            <!-- Image -->
+          <!-- DIVIDER -->
+          <div class="border-t border-[#2C2C2C] mb-6" />
+
+          <!-- STATS -->
+          <div class="flex justify-between">
             <div
-              class="hidden lg:block absolute top-0 right-0 bottom-0 w-1/2 rounded-tr-[40px] rounded-br-[40px] overflow-hidden z-0"
+              v-for="(stat, s) in item.stats"
+              :key="s"
+              class="pl-4 border-l-2"
+              :class="item.hoverBorder"
             >
-              <img
-                :src="item.image"
-                :alt="item.subtitle"
-                class="w-full h-full object-cover"
-              />
+              <p class="text-[40px] text-white mb-1">
+                {{ stat.prefix || "" }}<CountUpNumber :value="stat.value" />{{ stat.suffix || "" }}
+              </p>
+              <p class="text-[11px] uppercase text-[#AAAAAA]">
+                {{ stat.label }}
+              </p>
+            </div>
+          </div>
+
+          <!-- BUTTON -->
+          <div
+            class="px-8 py-3 rounded-full border inline-block cursor-pointer"
+            :class="item.hoverButton"
+          >
+            <span class="text-[16px] leading-[20px]">
+              View Case Study
+            </span>
+          </div>
+        </div>
+
+        <!-- RIGHT IMAGE -->
+        <div class="bg-[#f6f1e8] overflow-hidden">
+          <img
+            :src="item.image"
+            class="w-full h-full object-cover transition-transform duration-300 ease-out "
+          />
+        </div>
+
+        <!-- BORDER -->
+        <div
+          class="absolute inset-0 border-2 rounded-[48px] pointer-events-none transition-colors duration-300"
+          :class="item.hoverBorder"
+        />
+      </div>
+
+      <!-- MOBILE -->
+      <div class="lg:hidden rounded-[24px] overflow-hidden bg-black">
+        <div class="overflow-hidden">
+          <img
+            :src="item.mobileImage"
+            class="w-full object-cover transition-transform duration-300 ease-out group-hover:scale-105"
+          />
+        </div>
+
+        <div class="p-6 space-y-6">
+          <p class="text-gray-400 text-sm">
+            {{ item.title }}
+          </p>
+
+          <p class="text-2xl" :class="item.hoverText">
+            {{ item.subtitle }}
+          </p>
+
+          <div class="space-y-1 text-gray-400 text-sm">
+            <div v-for="(row, r) in item.tags" :key="r">
+              {{ row.join(" / ") }}
+            </div>
+          </div>
+
+          <div class="flex justify-between border-t border-gray-700 pt-6">
+            <div
+              v-for="(stat, s) in item.stats"
+              :key="s"
+              class="text-center"
+            >
+              <p class="text-xl text-white">
+                {{ stat.prefix || "" }}
+                <CountUpNumber :value="stat.value" />
+                {{ stat.suffix || "" }}
+              </p>
+              <p class="text-xs text-gray-400">
+                {{ stat.label }}
+              </p>
             </div>
           </div>
         </div>
-      </a>
-    </div>
-  </section>
+      </div>
+    </a>
+  </div>
 </template>
 
 <script setup>
-import CountUpNumber from "@/components/CountUpNumber.vue";
 import cases from "@/components/TavWork/cases";
+import CountUpNumber from "@/components/CountUpNumber.vue";
 </script>
-
-<style scoped>
-.btn-case {
-  color: black;
-  transition:
-    background-color 400ms ease,
-    color 400ms ease;
-}
-</style>

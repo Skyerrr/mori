@@ -15,7 +15,7 @@
       <div id="journey" class="mb-38 flex flex-col w-full">
         <TavJourney class="flex-1 w-full items-center" />
       </div>
-      <div id="references" class="flex flex-col w-full md:mb-38 md:mt-6">
+      <div id="references" class="min-h-screen flex flex-col w-full mb-24 ">
         <TavReferences class="flex-1 w-full" />
       </div>
       <div id="connect" class="flex flex-col w-full mb-12 md:mb-24">
