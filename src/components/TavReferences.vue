@@ -1,7 +1,7 @@
 <template>
   <section class="bg-black text-white px-8 md:px-16 overflow-hidden">
     <div
-      class="max-w-[1440px] mx-auto flex flex-col w-full testimonials-container ,"
+      class="max-w-[1600px] mx-auto flex flex-col w-full testimonials-container ,"
     >
       <!-- Section Header - Editorial -->
       <Motion

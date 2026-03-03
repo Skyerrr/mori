@@ -1,7 +1,7 @@
 <template>
-  <section class="min-h-screen md:min-h-auto bg-black text-white flex flex-col relative">
-    <div class="flex-1 px-8 md:px-16 py-12 relative">
-      <div class="max-w-[1440px] mx-auto h-full flex flex-col justify-center relative">
+  <section class="bg-black text-white flex flex-col relative">
+    <div class="flex-1 px-8 md:px-0 py-0 md:py-12 relative">
+      <div class="max-w-[1600px] mx-auto h-full flex flex-col justify-center relative">
 
         <!-- RIGHT METADATA -->
         <div class="hidden md:inline-flex absolute right-10 top-0 items-start">
@@ -103,7 +103,7 @@
               :while-hover="{ scale: 1.02 }"
               :while-tap="{ scale: 0.98 }"
               :disabled="isTransitioning"
-              class="px-6 py-4 border-2 rounded-full border-[#464646] hover:border-[#9ca3af] transition-all duration-300 bg-transparent disabled:opacity-50 cursor-pointer disabled:pointer-events-none text-sm sm:text-base"
+              class="px-4 py-3 md:px-6 md:py-4 border-2 rounded-full border-[#464646] hover:border-[#9ca3af] transition-all duration-300 bg-transparent disabled:opacity-50 cursor-pointer disabled:pointer-events-none text-sm sm:text-base"
             >
               {{ button.label }}
             </Motion>

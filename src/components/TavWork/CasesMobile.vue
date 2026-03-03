@@ -1,7 +1,7 @@
 <template>
   <section id="work" class="bg-black text-white flex justify-center">
     <div
-      class="flex flex-col gap-14 items-center w-full max-w-[clamp(320px,90vw,1280px)]"
+      class="flex flex-col gap-14 items-center w-full max-w-[clamp(320px,90vw,1280px)] mr-4"
     >
       <a
         v-for="item in cases"

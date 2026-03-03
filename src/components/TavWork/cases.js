@@ -33,7 +33,8 @@ const cases = [
   {
     slug: "https://pitch.com/v/elegibility-payer-mapping-xj6n9a",
     title: "LUMA HEALTH, 2025",
-    subtitle: "AI Eligibility Payer Matching",
+    subtitle: "AI Eligibility Payer",
+    subtitle2: "Matching",
     tags: [
       ["Health Tech", "Enterprise SaaS", "Startup", "Desktop", "Product Design", "AI automation"],
       

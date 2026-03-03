@@ -212,6 +212,8 @@ d1: makeNode('d1', {
     buttons: [
       { label: 'That is true', nextNodeId: 'p4'},
       { label: 'Is that why you build this?', nextNodeId: 'd2'},
+	  { label: 'How would you define Product Design?', nextNodeId: 'pd1'},
+      { label: 'How would you define Service Design?', nextNodeId: 'sd1'},
       { label: 'I want to change topics', nextNodeId: 'ph_topic2'}
   ]}),
 d2: makeNode('d2', {
@@ -292,7 +294,7 @@ pd1: makeNode('pd1', {
     response: `Product design is the art of making <br>complex decisions feel obvious.`,
     subtitle: '',
     buttons: [
-      { label: 'What about service?', nextNodeId: 'case_garden1'},
+      { label: 'What about service?', nextNodeId: 'pd2'},
       { label: 'I want to talk about other thing', nextNodeId: 'ph_topic2'}
   ]}),
 pd2: makeNode('pd2', {
@@ -399,9 +401,9 @@ acc3: makeNode('acc3', {
     response: `Markets reward products that remove barriers.<br>Accessibility is how ethics and ROI shake hands.`,
     subtitle: '',
     buttons: [
-      { label: 'Accessibillity is so cool!', nextNodeId: 'acc5'},
-      { label: 'Accessibillity is so cool!', nextNodeId: 'acc5'},
-      { label: 'Accessibillity is so cool!', nextNodeId: 'acc5'}
+      { label: 'Accessibillity is so cool!', nextNodeId: 'acc4'},
+      { label: 'Accessibillity is so cool!', nextNodeId: 'acc4'},
+      { label: 'Accessibillity is so cool!', nextNodeId: 'acc4'}
   ]}),
 acc4: makeNode('acc4', {
     response: `Thanks for enduring my accessibility sermon.<br>If you want to rant back:${textLinkImg('rodrigotavr@gmail.com', "mailto:rodrigotavr@gmail.com")}`,

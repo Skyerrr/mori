@@ -1,6 +1,6 @@
 <template>
-  <section id="about" class="min-h-screen bg-black text-white px-8 md:px-16">
-    <div class="max-w-[1440px] mx-auto">
+  <section id="about" class="bg-black text-white px-8 md:px-16">
+    <div class="max-w-[1600px] mx-auto">
       <!-- SECTION HEADER -->
       <Motion
         :initial="{ opacity: 0, y: 20 }"
@@ -178,7 +178,7 @@ const timeline = [
     title: "Led UX for Enterprise Platform – Luma Health",
     company: "Luma Health",
     description:
-      "Designed internal tools and AI automation that reduced customer go-live time by 20%-30%, turning weeks-long setup steps into hours.",
+      "Designed internal tools and AI automation that reduced customer go-live time by 20%-30%, turning weeks-long setup steps into hours. Built payer mapping, form testing, self-serve integration flows, dashboards, and led a full overhaul of complex settings.",
     color: "#FF6B35",
   },
   {
@@ -187,31 +187,34 @@ const timeline = [
       "Enhanced Accessibility and Design Consistency – Santander (Accenture Client)",
     company: "Santander (Accenture Client)",
     description:
-      "Improved information architecture and user experience for the Santander app.",
+      "Collaborated with cross-functional squads to implement the Global Design System in Brazil. Improved information architecture and user experience for the Santander app, and led the creation of a white-label accessibility guide recognized internally as a best-practice reference.",
     color: "#dc121a",
   },
   {
     year: "2023",
-    title: "Designed key website sections – Nubank (Accenture Client)",
+    title:
+      "Designed key website sections and conducted usability tests – Nubank (Accenture Client)",
     company: "Nubank (Accenture Client)",
     description:
-      "Designed core pages and conducted usability tests guiding 15+ designers.",
+      "Designed multiple core pages and conducted usability tests that guided the work of 15+ designers. Delivered a cohesive navigation structure and improved content alignment, shaping a stronger foundation for the product’s next phase.",
     color: "#820ad1",
   },
   {
     year: "2022",
-    title: "Redesigned acquisition experience – Vivo (Accenture Client)",
+    title:
+      "Redesigned the whole aquisition experience for Vivo (Accenture Client)",
     company: "Vivo (Accenture Client)",
     description:
-      "Merged 7 fragmented checkout flows into a scalable experience.",
+      "Partnered with Vivo’s design lead to merge 7 fragmented checkout flows into a single, scalable experience. The new journey streamlined the purchase process for digital services and improved business efficiency with automation and consistency.",
     color: "#660099",
   },
   {
     year: "2021",
-    title: "Launched B2B SaaS Portal – Vivo (Accenture Client)",
+    title:
+      "Joined Accenture and Launched a B2B SaaS Portal – Vivo (Accenture Client)",
     company: "Vivo (Accenture Client)",
     description:
-      "Delivered a new enterprise SaaS portal with improved usability.",
+      "Joined Accenture’s design team and delivered a new B2B SaaS portal for Vivo, enabling clients to explore and manage enterprise service solutions with improved usability and scalability.",
     color: "#660099",
   },
 ];

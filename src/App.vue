@@ -2,11 +2,11 @@
   <div class="bg-color">
     <TopBar class="hidden md:block" />
     <TopBarMobile class="block md:hidden" />
-<EditorialMargins />
+
     <div id="intro" class="flex flex-col w-full mt-6">
-      <div class="mb-0 lg:mb-38 flex flex-col w-full">
+      <div class=" mb-0 lg:mb-38 flex flex-col w-full">
         <TavIntro
-          class="flex-1 w-full"
+          class="min-h-screen flex-1 w-full"
         />
       </div>
       <div id="work" class="mb-38 md:mt-6 flex flex-col w-full">

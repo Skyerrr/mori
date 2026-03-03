@@ -7,7 +7,7 @@ import { Motion } from "motion-v"
     id="work"
     class="bg-black text-white px-8 relative mb-16 sm:mb-0"
   >
-    <div class="max-w-[1440px] mx-auto">
+    <div class="max-w-[1600px] mx-auto">
 
       <!-- Section Header -->
       <Motion

@@ -13,8 +13,8 @@
         <span class="satoshi font-black italic text-white text-[24px]">TAV<span class="text-[#EDC756]">.</span></span>
 
         <button class="md:hidden" @click.stop="open = !open">
-          <img v-if="!open" src="@/assets/image/menu-icon.svg" />
-          <img v-else src="@/assets/image/close-icon.svg" />
+          <img v-if="!open" class="mr-2" src="@/assets/image/menu-icon.svg" />
+          <img v-else class="mr-1" src="@/assets/image/close-icon.svg" />
         </button>
       </div>
     </div>
