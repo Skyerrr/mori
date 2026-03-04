@@ -1,6 +1,6 @@
 <template>
   <section class="bg-black text-white flex flex-col relative">
-    <div class="flex-1 px-8 md:px-8 py-0 md:py-12 relative">
+    <div class="flex-1 px-8 md:px-8 py-0 md:py-0 relative">
       <div class="max-w-[1600px] mx-auto h-full flex flex-col justify-center relative">
 
         <!-- RIGHT METADATA -->

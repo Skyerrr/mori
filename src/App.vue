@@ -1,13 +1,13 @@
 <template>
   <div class="bg-color">
-    <TopBar class="hidden md:block" />
+    <TopBar class="hidden md:block " />
     <TopBarMobile class="block md:hidden" />
 
     <div class="flex flex-col w-full">
       <div
         class="mb-0 md:mb-0 flex flex-col w-full min-h-screen md:flex md:flex-col"
       >
-        <div id="intro" class="w-full md:flex md:flex-col md:flex-1 md:justify-center">
+        <div id="intro" class="w-full md:flex md:flex-col md:flex-1 md:justify-center md:-mt-26 lg:-mt-32">
           <TavIntro class="w-full" />
         </div>
       </div>

@@ -5,8 +5,13 @@
       :key="index"
       :initial="{ opacity: 0, y: 60 }"
       :while-in-view="{ opacity: 1, y: 0 }"
-      :transition="{ duration: 0.8, delay: index * 0.15, ease: [0.16, 1, 0.3, 1] }"
+      :transition="{
+        duration: 0.8,
+        delay: index * 0.15,
+        ease: [0.16, 1, 0.3, 1],
+      }"
       :viewport="{ once: true, amount: 0.2 }"
+      :inViewOptions="{ once: true }"
     >
       <a
         :href="item.slug"
@@ -71,9 +76,7 @@
               class="px-8 py-3 rounded-full border inline-block cursor-pointer"
               :class="item.hoverButton"
             >
-              <span class="text-[16px] leading-[20px]">
-                View Case Study
-              </span>
+              <span class="text-[16px] leading-[20px]"> View Case Study </span>
             </div>
           </div>
 
@@ -117,11 +120,7 @@
             </div>
 
             <div class="flex justify-between border-t border-gray-700 pt-6">
-              <div
-                v-for="(stat, s) in item.stats"
-                :key="s"
-                class="text-center"
-              >
+              <div v-for="(stat, s) in item.stats" :key="s" class="text-center">
                 <p class="text-xl text-white">
                   {{ stat.prefix || "" }}
                   <CountUpNumber :value="stat.value" />

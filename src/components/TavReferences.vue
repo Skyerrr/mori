@@ -1,14 +1,13 @@
 <template>
   <section class="bg-black text-white px-8 md:px-16 overflow-hidden">
-    <div
-      class="max-w-[1600px] mx-auto flex flex-col w-full testimonials-container ,"
-    >
-      <!-- Section Header - Editorial -->
+    <div class="max-w-[1600px] mx-auto flex flex-col w-full testimonials-container">
+      <!-- Section Header -->
       <Motion
         :initial="{ opacity: 0, y: 20 }"
         :whileInView="{ opacity: 1, y: 0 }"
         :viewport="{ once: true }"
-        :transition="{ duration: 0.8 }"
+        :transition="{ duration: 0.3 }"
+        :inViewOptions="{ once: true }"
         class="grid md:grid-cols-12 gap-6 md:gap-12 mb-8 md:mb-12 flex-shrink-0"
       >
         <div class="md:col-span-1">
@@ -57,13 +56,16 @@
       <!-- CAROUSEL -->
       <div
         ref="container"
-        class="overflow-hidden relative w-full mt-12"
+        class="overflow-hidden relative w-full mt-12 touch-pan-x"
         @mouseenter="hovering = true"
         @mouseleave="hovering = false"
+        @touchstart="onTouchStart"
+        @touchmove="onTouchMove"
+        @touchend="onTouchEnd"
       >
         <div
           ref="track"
-          class="flex items-stretch"
+          class="flex items-stretch select-none"
           :style="{
             gap: gap + 'px',
             transform: `translate3d(${-offset}px, 0, 0)`,
@@ -78,7 +80,7 @@
             <div>
               <div class="flex items-start gap-4 mb-6">
                 <div
-                  class="w-[60px] h-[60px]  shrink-0 rounded-full overflow-hidden border-2 border-[#464646]"
+                  class="w-[60px] h-[60px] shrink-0 rounded-full overflow-hidden border-2 border-[#464646]"
                 >
                   <img :src="t.avatar" class="w-full h-full object-cover" />
                 </div>
@@ -104,29 +106,29 @@
           </div>
         </div>
       </div>
-            <Motion
+
+      <Motion
         :initial="{ opacity: 0, y: 20 }"
         :whileInView="{ opacity: 1, y: 0 }"
         :transition="{ duration: 0.8 }"
         :viewport="{ once: true }"
-        class=""
+        :inViewOptions="{ once: true }"
       >
-      <div class="flex flex-wrap justify-start ml-2 md:ml-30 gap-4 w-full max-w-8xl mt-16">
-        <div class="flex-shrink-0">
-          <a
-            href="https://www.linkedin.com/in/rodrigo-tavares-ribeiro/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <button
-              @click=""
-              class="py-3 px-6 rounded-full text-[16px] satoshi font-medium flex items-center justify-center text-center btn-ani-black cursor-pointer"
+        <div class="flex flex-wrap justify-start ml-2 md:ml-30 gap-4 w-full max-w-8xl mt-16">
+          <div class="flex-shrink-0">
+            <a
+              href="https://www.linkedin.com/in/rodrigo-tavares-ribeiro/"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-             <Linkedin class="w-5 h-5  mr-2" /> VIEW LINKEDIN PROFILE
-            </button>
-          </a>
+              <button
+                class="py-3 px-6 rounded-full text-[16px] satoshi font-medium flex items-center justify-center text-center btn-ani-black cursor-pointer"
+              >
+                <Linkedin class="w-5 h-5 mr-2" /> VIEW LINKEDIN PROFILE
+              </button>
+            </a>
+          </div>
         </div>
-      </div>
       </Motion>
     </div>
   </section>
@@ -134,8 +136,8 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted, nextTick, computed } from "vue";
-import { Motion } from "motion-v"
-import { Linkedin } from "lucide-vue-next"
+import { Motion } from "motion-v";
+import { Linkedin } from "lucide-vue-next";
 
 import avatar1 from "@/assets/image/halley.png";
 import avatar2 from "@/assets/image/gabby.png";
@@ -160,22 +162,41 @@ const baseTestimonials = [
     text: "I had the pleasure of working alongside Rodrigo for 6+ months, and I can confidently say he is an exceptional UI/UX and product designer. His ability to quickly grasp complex problems and ask the right questions made him an invaluable collaborator on our team.",
     avatar: avatar3
   }
-];
+]
 
 const gap = ref(64);
 const normalSpeed = 40;
 const slowSpeed = 15;
-
 const hovering = ref(false);
 const offset = ref(0);
-
 const container = ref(null);
 const track = ref(null);
 const renderedTestimonials = ref([]);
-
 let frameId = null;
 let lastTime = null;
 let loopWidth = 0;
+
+// --- TOUCH/DRAG SUPPORT ---
+let startX = 0;
+let startOffset = 0;
+let isDragging = false;
+
+const onTouchStart = (e) => {
+  if (window.innerWidth >= 768) return; // only mobile
+  isDragging = true;
+  startX = e.touches[0].clientX;
+  startOffset = offset.value;
+};
+
+const onTouchMove = (e) => {
+  if (!isDragging) return;
+  const dx = e.touches[0].clientX - startX;
+  offset.value = (startOffset - dx + loopWidth * 2) % loopWidth;
+};
+
+const onTouchEnd = () => {
+  isDragging = false;
+};
 
 const cardStyle = computed(() => ({
   width: "clamp(320px, 35vw, 620px)",
@@ -186,25 +207,24 @@ const cardStyle = computed(() => ({
 async function buildTrack() {
   renderedTestimonials.value = [...baseTestimonials];
   await nextTick();
-
   const containerWidth = container.value.offsetWidth;
-
   while (track.value.scrollWidth < containerWidth * 2) {
     renderedTestimonials.value.push(...baseTestimonials);
     await nextTick();
   }
-
   loopWidth = track.value.scrollWidth / 2;
 }
 
 function animate(time) {
   if (!lastTime) lastTime = time;
-
   const delta = (time - lastTime) / 1000;
   lastTime = time;
 
-  const speed = hovering.value ? slowSpeed : normalSpeed;
-  offset.value = (offset.value + speed * delta) % loopWidth;
+  // Only auto-scroll if not dragging
+  if (!isDragging) {
+    const speed = hovering.value ? slowSpeed : normalSpeed;
+    offset.value = (offset.value + speed * delta) % loopWidth;
+  }
 
   frameId = requestAnimationFrame(animate);
 }

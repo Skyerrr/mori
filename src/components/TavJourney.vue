@@ -6,7 +6,7 @@
         :initial="{ opacity: 0, y: 20 }"
         :whileInView="{ opacity: 1, y: 0 }"
         :transition="{ duration: 0.8 }"
-        :viewport="{ once: true }"
+        :inViewOptions="{ once: true }"
         class="grid md:grid-cols-12 gap-8 md:gap-12 mb-16 md:mb-32"
       >
         <div class="md:col-span-1">
@@ -45,7 +45,7 @@
         :initial="{ opacity: 0, y: 20 }"
         :whileInView="{ opacity: 1, y: 0 }"
         :transition="{ duration: 0.8, delay: 0.2 }"
-        :viewport="{ once: true }"
+        :inViewOptions="{ once: true }"
         class="grid md:grid-cols-12 gap-8 md:gap-12 mb-12 md:mb-0 pb-6 md:pb-12"
       >
         <div class="md:col-span-1"></div>
@@ -78,7 +78,7 @@
         :initial="{ opacity: 0, y: 20 }"
         :whileInView="{ opacity: 1, y: 0 }"
         :transition="{ duration: 0.8, delay: 0.2 }"
-        :viewport="{ once: true }"
+        :inViewOptions="{ once: true }"
       >
         <Images class="pb-12" />
       </Motion>
@@ -88,13 +88,17 @@
         :initial="{ opacity: 0, y: 20 }"
         :whileInView="{ opacity: 1, y: 0 }"
         :transition="{ duration: 0.8, delay: 0.4 }"
-        :viewport="{ once: true }"
+        :inViewOptions="{ once: true }"
         class="space-y-12 md:space-y-16 pt-12 mb-12 md:mb-24"
       >
         <div
           v-for="(item, index) in timeline"
           :key="index"
-          class="timeline-row grid md:grid-cols-12 gap-8 md:gap-12 pb-12 border-b border-[#1F2937] last:border-0 group transition-all duration-500"
+          ref="rows"
+          :class="[
+            'timeline-row grid md:grid-cols-12 gap-8 md:gap-12 pb-12 border-b border-[#1F2937] last:border-0 group transition-all duration-500',
+            { 'is-active': activeIndex === index && isMobile },
+          ]"
           :style="{ '--hover-color': item.color }"
         >
           <div class="md:col-span-1"></div>
@@ -102,7 +106,7 @@
           <!-- YEAR -->
           <div class="md:col-span-2">
             <div
-              class="transition-colors duration-500 text-[#aaaaaa] group-hover:[color:var(--hover-color)]"
+              class="year transition-colors duration-500 text-[#aaaaaa] group-hover:[color:var(--hover-color)]"
               style="
                 font-family:
                   Playfair Display,
@@ -122,7 +126,7 @@
 
             <p
               v-if="item.company"
-              class="mb-4 uppercase tracking-wider text-[0.7rem] transition-colors duration-500 text-[rgb(122,143,174)] group-hover:[color:var(--hover-color)]"
+              class="company mb-4 uppercase tracking-wider text-[0.7rem] transition-colors duration-500 text-[rgb(122,143,174)] group-hover:[color:var(--hover-color)]"
             >
               {{ item.company }}
             </p>
@@ -140,6 +144,7 @@
         :whileInView="{ opacity: 1, y: 0 }"
         :transition="{ duration: 0.8 }"
         :viewport="{ once: true }"
+        :inViewOptions="{ once: true }"
       >
         <div
           class="flex flex-wrap justify-start ml-2 md:ml-30 gap-4 w-full max-w-8xl"
@@ -161,6 +166,7 @@
 </template>
 
 <script setup>
+import { ref, onMounted, onBeforeUnmount } from "vue";
 import { Motion } from "motion-v";
 import Images from "./TavJourney/Images.vue";
 import { Download } from "lucide-vue-next";
@@ -218,11 +224,48 @@ const timeline = [
     color: "#660099",
   },
 ];
+
+// --- MOBILE ACTIVE SCROLL LOGIC ---
+const rows = ref([]);
+const activeIndex = ref(null);
+const isMobile = ref(false);
+let observer;
+
+onMounted(() => {
+  isMobile.value = window.innerWidth < 768;
+  if (!isMobile.value) return; // Only activate on mobile
+
+  rows.value = Array.from(document.querySelectorAll(".timeline-row"));
+
+  observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const index = rows.value.indexOf(entry.target);
+        if (entry.isIntersecting) {
+          activeIndex.value = index;
+        }
+      });
+    },
+    { root: null, threshold: 0.6 },
+  );
+
+  rows.value.forEach((row) => observer.observe(row));
+});
+
+onBeforeUnmount(() => {
+  if (observer) observer.disconnect();
+});
 </script>
 
 <style scoped>
 .timeline-row {
   position: relative;
+}
+
+/* Active highlight on mobile only */
+.timeline-row.is-active .year,
+.timeline-row.is-active .company {
+  color: var(--hover-color);
 }
 
 /* Expands hover interaction area */

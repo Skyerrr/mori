@@ -10,6 +10,8 @@
         :while-in-view="{ opacity: 1, y: 0 }"
         :transition="{ duration: 0.8, delay: index * 0.15, ease: [0.16, 1, 0.3, 1] }"
         :viewport="{ once: true, amount: 0.2 }"
+       
+        :inViewOptions="{ once: true }"
       >
         <a
           class="group relative flex justify-center w-full arrow-black-wrapper"
