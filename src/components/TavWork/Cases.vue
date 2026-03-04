@@ -50,7 +50,7 @@
             </div>
 
             <!-- DIVIDER -->
-            <div class="border-t border-[#71717A] mb-6" />
+            <div class="border-t border-[#464646] mb-6" />
 
             <!-- STATS -->
             <div class="flex justify-between">
